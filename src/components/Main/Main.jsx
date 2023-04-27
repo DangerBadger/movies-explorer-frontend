@@ -1,9 +1,9 @@
 import './Main.css';
 
 function Main(props) {
-  return(
+  return (
     <></>
-  )
+  );
 }
 
 export default Main;
