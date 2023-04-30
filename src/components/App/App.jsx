@@ -1,5 +1,5 @@
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import './App.css';
+import './App.scss';
 
 import Main from '../Main/Main';
 

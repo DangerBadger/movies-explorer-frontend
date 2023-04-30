@@ -1,8 +1,8 @@
-import './Main.css';
+import './Main.scss';
 
 function Main(props) {
   return (
-    <></>
+    <p>Example</p>
   );
 }
 
