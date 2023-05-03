@@ -17,6 +17,8 @@
     "import/no-unresolved": "off",
     "react/jsx-props-no-spreading": "warn",
     "react/function-component-definition": "off",
+    "react/prop-types": "warn",
+    "react/jsx-wrap-multilines": "off",
     "import/no-extraneous-dependencies": "off",
     "import/extensions": "off",
     "no-unused-vars": "warn",

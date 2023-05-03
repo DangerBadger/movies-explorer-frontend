@@ -2,7 +2,7 @@ import './Main.scss';
 
 function Main(props) {
   return (
-    <p>Example</p>
+    <p className="example">Example</p>
   );
 }
 
