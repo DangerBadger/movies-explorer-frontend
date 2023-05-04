@@ -5,133 +5,136 @@
   height: 74px;
   display: flex;
   justify-content: space-between;
-}
 
-.header__logo {
-  height: 38px;
-  width: 38px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: $green-button;
-  margin: 18px 0 0;
-  padding: 0;
-  border-radius: 8px;
-  transition: opacity 0.2s linear 0.05s;
-}
+  &__logo {
+    height: 38px;
+    width: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $green-button;
+    margin: 18px 0 0;
+    padding: 0;
+    border-radius: 8px;
+    transition: opacity 0.2s linear 0.05s;
 
-.header__logo:hover {
-  opacity: 0.8;
-  cursor: pointer;
-}
+    &__logo-img {
+      margin: 0;
+      padding: 0;
+    }
+  }
 
-.header__logo-img {
-  margin: 0;
-  padding: 0;
-}
+  &__logo:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
 
-.header__navigation_login {
-  display: flex;
-}
+  .header__navigation_login {
+    display: flex;
 
-.header__links {
-  list-style: none;
-  display: flex;
-  flex-direction: row;
-  margin: 28px 50px 0 0;
-  padding: 0;
-}
+  }
 
-.header__link {
-  color: #fff;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 18px;
-  margin: 0 20px 0 0;
-  transition: opacity 0.2s linear 0.05s;
-}
+  &__links {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin: 28px 50px 0 0;
+    padding: 0;
+  }
 
-.header__link:last-of-type {
-  margin-right: 0;
-}
+  &__link {
+    color: #fff;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    margin: 0 20px 0 0;
+    transition: opacity 0.2s linear 0.05s;
+  }
 
-.header__link:hover {
-  opacity: 0.7;
-  cursor: pointer;
-}
+  &__link:last-of-type {
+    margin-right: 0;
+  }
 
-.header__account-btn {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100px;
-  height: 32px;
-  text-decoration: none;
-  margin: auto 0;
-  padding: 0;
-  border: rgba(170, 170, 170, 0.2) solid 2px;
-  border-radius: 50px;
-  transition: opacity 0.2s linear 0.05s;
-}
+  &__link:hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
 
-.header__account-btn:hover {
-  opacity: 0.8;
-  cursor: pointer;
-}
+  &__account-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100px;
+    height: 32px;
+    text-decoration: none;
+    margin: auto 0;
+    padding: 0;
+    border: rgba(170, 170, 170, 0.2) solid 2px;
+    border-radius: 50px;
+    transition: opacity 0.2s linear 0.05s;
+  }
 
-.header__account-img {
-  height: 14px;
-  width: 12px;
-  margin: 0 0 0 12px;
-  padding: 0;
-}
+  &__account-btn:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
 
-.header__account-btn-text {
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 16px;
-  color: #fff;
-  margin: 0 12px 0 0;
-  padding: 0;
-}
+  &__account-img {
+    height: 14px;
+    width: 12px;
+    margin: 0 0 0 12px;
+    padding: 0;
+  }
 
-.header__navigation_logout{}
+  &__account-btn-text {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #fff;
+    margin: 0 12px 0 0;
+    padding: 0;
+  }
 
-.header__registration-link {
-  margin: 28px 50px 0 0;
-  padding: 0;
-  color: #fff;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 18px;
-  transition: opacity 0.2s linear 0.05s;
-}
+  &__navigation_logout{
+    display: flex;
+  }
 
-.header__registration-link:hover {
-  opacity: 0.7;
-  cursor: pointer;
-}
+  &__registration-link {
+    margin: 28px 30px 0 0;
+    padding: 0;
+    color: #fff;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    transition: opacity 0.2s linear 0.05s;
+  }
 
-.header__enter-btn {
-  margin: auto 0;
-  padding: 0;
-  text-decoration: none;
-  color: #000;
-  width: 76px;
-  height: 32px;
-  border-radius: 3px;
-  background-color: $green-button;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-  transition: opacity 0.2s linear 0.05s;
-}
+  &__registration-link:hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
 
-.header__enter-btn:hover {
-  opacity: 0.8;
-  cursor: pointer;
+  &__enter-btn {
+    margin: auto 0;
+    padding: 0;
+    text-decoration: none;
+    color: #000;
+    width: 76px;
+    height: 32px;
+    border-radius: 3px;
+    background-color: $green-button;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    transition: opacity 0.2s linear 0.05s;
+  }
+
+  &__enter-btn:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
 }
