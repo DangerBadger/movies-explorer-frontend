@@ -1,7 +1,7 @@
 @use "../../components/App/_vars" as *;
 
 .header {
-  width: (1280px - (70px * 2));
+  width: 100% - 10.9375%;
   height: 74px;
   display: flex;
   justify-content: space-between;
@@ -29,9 +29,60 @@
     cursor: pointer;
   }
 
-  .header__navigation_login {
-    display: flex;
+  &__burger-btn {
+    position: relative;
+    border: none;
+    height: 44px;
+    width: 44px;
+    margin: 15px 0 0;
+    padding: 11px 8px 10px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    outline: none;
+    z-index: 2;
+  }
 
+  &__burger-btn-line {
+    display: block;
+    position: absolute;
+    width: 28px;
+    height: 3px;
+    background-color: #fff;
+    transition: opacity .25s, transform .35s;
+  }
+
+  &__burger-btn-line:nth-child(2) {
+    transform: translateY(10px);
+  }
+
+  &__burger-btn-line:nth-child(3) {
+    transform: translateY(20px);
+  }
+
+  /*Крестик*/
+  &_opened {
+    .header__burger-btn-line:nth-child(1) {
+      transform: translateY(10px) rotate(45deg);
+    }
+
+    .header__burger-btn-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .header__burger-btn-line:nth-child(3) {
+      transform: translateY(10px) rotate(-45deg);
+    }
+  }
+
+  &__nav-overlay {
+    display: none;
+  }
+
+  &__menu_login {
+    display: flex;
   }
 
   &__links {
@@ -58,6 +109,10 @@
   &__link:hover {
     opacity: 0.7;
     cursor: pointer;
+  }
+
+  &__mainpage {
+    display: none;
   }
 
   &__account-btn {
@@ -95,7 +150,7 @@
     padding: 0;
   }
 
-  &__navigation_logout{
+  &__menu_logout{
     display: flex;
   }
 
@@ -136,5 +191,106 @@
   &__enter-btn:hover {
     opacity: 0.8;
     cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .header {
+    max-width: 100% - 11.7188%;
+  }
+}
+
+@media screen and (max-width: 949px) {
+  .header {
+    max-width: 100% - 7.8125%;
+
+    &__burger-btn {
+      display: flex;
+    }
+
+    &__menu_login {
+      position: fixed;
+      right: -67.71%;
+      top: 0;
+      width: 67.71%;
+      height: 100vh;
+      padding: 17.5273vh 0 90px;
+      flex-direction: column;
+      background-color: $prime-backgroundcolor;
+      align-items: center;
+      visibility: hidden;
+      transition: all .5s;
+    }
+
+    &__nav-overlay {
+      display: flex;
+      position: fixed;
+      right: -100%;
+      top: 0;
+      width: 100%;
+      height: 100vh;
+      visibility: hidden;
+      transition: transform 0s, background-color .5s, visibility .5s;
+    }
+
+    &_opened {
+
+      .header__burger-btn {
+        position: fixed;
+        top: 15px;
+        right: 5.35vw;
+        margin: 0;
+      }
+
+      .header__nav-overlay {
+        background-color: rgba(0, 0, 0, 0.3);
+        transform: translateX(-100%);
+        visibility: visible;
+      }
+
+      .header__menu_login {
+        position: fixed;
+        transform: translateX(-100%);
+        visibility: visible;
+        z-index: 1;
+      }
+    }
+
+    &__links {
+      margin: 0;
+      display: inline-block;
+    }
+
+    &__link {
+      margin: 0 auto 28px;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 22px;
+      text-align: center;
+      width: max-content;
+    }
+
+    &__link:last-of-type {
+      margin-bottom: 0;
+    }
+
+    &__mainpage {
+      display: block;
+    }
+
+    &__link_active {
+      text-decoration: underline 2px;
+      text-underline-offset: 4px;
+    }
+
+    &__account-btn {
+      margin: 60.6445vh 0 0;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header {
+    max-width: 100% - 13.3333%;
   }
 }
