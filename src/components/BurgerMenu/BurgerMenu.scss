@@ -1,0 +1,240 @@
+@use "../../components/App/_vars" as *;
+
+.burger {
+  margin: 0;
+  padding: 0;
+
+  &__button {
+    position: relative;
+    border: none;
+    height: 44px;
+    width: 44px;
+    margin: 15px 0 0;
+    padding: 11px 8px 10px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    outline: none;
+    z-index: 2;
+  }
+
+  &__button-line {
+    display: block;
+    position: absolute;
+    width: 28px;
+    height: 3px;
+    background-color: #fff;
+    transition: opacity .25s, transform .35s;
+  }
+
+  &__button-line:nth-child(2) {
+    transform: translateY(10px);
+  }
+
+  &__button-line:nth-child(3) {
+    transform: translateY(20px);
+  }
+
+  /*Крестик*/
+  &_opened {
+    .burger__button-line:nth-child(1) {
+      transform: translateY(10px) rotate(45deg);
+    }
+
+    .burger__button-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .burger__button-line:nth-child(3) {
+      transform: translateY(10px) rotate(-45deg);
+    }
+  }
+
+  &__nav-overlay {
+    display: flex;
+  }
+
+  &__menu_login {
+    display: flex;
+  }
+
+  &__links {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin: 28px 50px 0 0;
+    padding: 0;
+  }
+
+  &__link {
+    color: #fff;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    margin: 0 20px 0 0;
+    transition: opacity 0.2s linear 0.05s;
+  }
+
+  &__link:last-of-type {
+    margin-right: 0;
+  }
+
+  &__link:hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
+
+  &__link_mainpage {
+    display: none;
+  }
+
+  &__account-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 97px;
+    height: 28px;
+    text-decoration: none;
+    margin: 21px 0 0;
+    padding: 0;
+    border: rgba(170, 170, 170, 0.2) solid 2px;
+    border-radius: 50px;
+    transition: opacity 0.2s linear 0.05s;
+  }
+
+  &__account-btn:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+
+  &__account-img {
+    height: 14px;
+    width: 12px;
+    margin: 0 0 0 12px;
+    padding: 0;
+  }
+
+  &__account-btn-text {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #fff;
+    margin: 0 12px 0 0;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 949px) {
+  .burger__button {
+    display: flex;
+  }
+
+  .burger__nav-overlay {
+    display: flex;
+    position: fixed;
+    right: -100%;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    visibility: hidden;
+    transition: transform 0s .5s, background-color .5s, visibility .5s;
+  }
+
+  .burger__menu_login {
+    position: fixed;
+    right: -67.71%;
+    top: 0;
+    width: 67.71%;
+    height: 100vh;
+    padding: 17.5273vh 0 90px;
+    flex-direction: column;
+    background-color: $prime-backgroundcolor;
+    align-items: center;
+    visibility: hidden;
+    transition: all .5s;
+  }
+
+  .burger_opened {
+    .burger__button {
+      position: fixed;
+      top: 15px;
+      right: 5.35vw;
+      margin: 0;
+    }
+
+    .burger__nav-overlay {
+      background-color: rgba(0, 0, 0, 0.3);
+      transform: translateX(-100%);
+      visibility: visible;
+      transition: transform 0s, background-color .5s, visibility .5s;
+    }
+
+    .burger__menu_login {
+      position: fixed;
+      transform: translateX(-100%);
+      visibility: visible;
+      z-index: 1;
+    }
+
+    .burger__link_mainpage {
+      display: block;
+    }
+  }
+
+  .burger__links {
+    margin: 0;
+    display: inline-block;
+  }
+
+  .burger__link {
+    transition: margin .5s;
+    margin: 0 auto 14%;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    width: max-content;
+  }
+
+  .burger__link:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .burger__mainpage {
+    display: block;
+  }
+
+  .burger__link_active {
+    text-decoration: underline 2px;
+    text-underline-offset: 8px;
+  }
+
+  .burger__account-btn {
+    margin: 60.6445vh 0 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .burger__menu_login {
+    width: 78%;
+    right: -78%;
+  }
+}
+
+@media screen and (max-width: 449px) {
+  .burger__menu_login {
+    width: 100%;
+    right: -100%;
+  }
+
+  .burger__link {
+    transition: margin .5s;
+    margin-bottom: 12%;
+  }
+
+  .burger__link_active {
+    text-underline-offset: 10px;
+  }
+}
