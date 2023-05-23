@@ -2,7 +2,7 @@ import './Main.scss';
 
 function Main(props) {
   return (
-    <main>
+    <main className="main">
       <p className="example">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
         incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis

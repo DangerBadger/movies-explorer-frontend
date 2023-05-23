@@ -11,7 +11,10 @@ function App() {
   return (
     <div className="app">
       <Header isLoggedIn={isLoggedIn} />
-      <Main />
+
+      <Routes>
+        <Route path="/" element={<Main />} />
+      </Routes>
     </div>
   );
 }
