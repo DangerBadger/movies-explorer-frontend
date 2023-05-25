@@ -4,15 +4,20 @@ import logo from '../../images/logo.svg';
 
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
-function Header({ isLoggedIn }) {
+function Header({
+  isLoggedIn,
+  isOpened,
+  onClose,
+  openBurger,
+}) {
   return (
     <header className="header header_opened">
-      <Link to="*" className="header__logo">
+      <Link to="/" className="header__logo">
         <img className="header__logo-img" alt="Логотип" src={logo} />
       </Link>
       {isLoggedIn
         ? (
-          <BurgerMenu />
+          <BurgerMenu isOpened={isOpened} onClose={onClose} openBurger={openBurger} />
         )
         : (
           <div className="header__menu_logout">

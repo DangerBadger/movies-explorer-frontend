@@ -1,0 +1,39 @@
+@use "../../components/App/vars" as *;
+
+.navtab {
+  &__links {
+    list-style: none;
+    margin: 30.63% auto 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 308px;
+  }
+
+  &__link {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 96px;
+    height: 36px;
+    background-color: $button-grey;
+    border-radius: 10px;
+    transition: opacity .5s;
+  }
+
+  &__link:hover {
+    opacity: 0.6;
+    cursor: pointer;
+  }
+
+  &__anchor {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: $text-white;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 133%;
+  }
+}

@@ -18,6 +18,12 @@
     background-color: transparent;
     outline: none;
     z-index: 2;
+    transition: opacity .4s;
+  }
+
+  &__button:hover {
+    opacity: 0.7;
+    cursor: pointer;
   }
 
   &__button-line {
@@ -26,7 +32,7 @@
     width: 28px;
     height: 3px;
     background-color: #fff;
-    transition: opacity .25s, transform .35s;
+    transition: transform .35s;
   }
 
   &__button-line:nth-child(2) {
@@ -60,7 +66,7 @@
     display: flex;
   }
 
-  &__links {
+  &__lines {
     list-style: none;
     display: flex;
     flex-direction: row;
@@ -68,17 +74,21 @@
     padding: 0;
   }
 
+  &__line {
+    margin: 0 20px 0 0;
+  }
+
+  &__line:last-of-type {
+    margin-right: 0;
+  }
+
   &__link {
+    text-decoration: none;
     color: #fff;
     font-weight: 500;
     font-size: 14px;
     line-height: 18px;
-    margin: 0 20px 0 0;
-    transition: opacity 0.2s linear 0.05s;
-  }
-
-  &__link:last-of-type {
-    margin-right: 0;
+    transition: opacity .4s linear .05s;
   }
 
   &__link:hover {
@@ -86,8 +96,8 @@
     cursor: pointer;
   }
 
-  &__link_mainpage {
-    display: none;
+  &__line_mainpage {
+    visibility: hidden;
   }
 
   &__account-btn {
@@ -156,6 +166,10 @@
     transition: all .5s;
   }
 
+  .burger__line_mainpage {
+    visibility: visible;
+  }
+
   .burger_opened {
     .burger__button {
       position: fixed;
@@ -177,28 +191,20 @@
       visibility: visible;
       z-index: 1;
     }
-
-    .burger__link_mainpage {
-      display: block;
-    }
   }
 
-  .burger__links {
+  .burger__lines {
     margin: 0;
     display: inline-block;
   }
 
-  .burger__link {
+  .burger__line {
     transition: margin .5s;
     margin: 0 auto 14%;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 22px;
-    text-align: center;
     width: max-content;
   }
 
-  .burger__link:last-of-type {
+  .burger__line:last-of-type {
     margin-bottom: 0;
   }
 
@@ -206,9 +212,17 @@
     display: block;
   }
 
+  .burger__link {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+  }
+
   .burger__link_active {
     text-decoration: underline 2px;
     text-underline-offset: 8px;
+    transition: all .4s;
   }
 
   .burger__account-btn {
@@ -229,12 +243,13 @@
     right: -100%;
   }
 
-  .burger__link {
+  .burger__line {
     transition: margin .5s;
     margin-bottom: 12%;
   }
 
   .burger__link_active {
     text-underline-offset: 10px;
+    transition: all .4s;
   }
 }

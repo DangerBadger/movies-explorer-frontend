@@ -1,0 +1,25 @@
+@use "../../components/App/vars" as *;
+
+.promo{
+  background-color: $grey-backgroundcolor;
+  margin: 20px auto 0;
+  padding: 0;
+  border-radius: 10px;
+  width: 93.75vw;
+  height: 493px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  &__text {
+    color: $text-white;
+    margin: 180px auto 0;
+    padding: 0;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 116%;
+    letter-spacing: -0.04em;
+    width: 60.83%;
+  }
+}

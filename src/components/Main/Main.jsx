@@ -1,9 +1,12 @@
 import './Main.scss';
 
-function Main(props) {
+import Promo from '../Promo/Promo';
+
+function Main() {
   return (
     <main className="main">
-      <p className="example">
+      <Promo />
+      {/* <p className="example">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
         incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
         nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
@@ -146,7 +149,7 @@ function Main(props) {
         irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
         pariatur. Excepteur sint occaecat cupidatat non
         proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
+      </p> */}
     </main>
   );
 }
