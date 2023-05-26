@@ -6,7 +6,7 @@ import Main from '../Main/Main';
 import Header from '../Header/Header';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isBurgerOpened, setIsBurgerOpened] = useState(false);
 
   const openBurger = () => {
