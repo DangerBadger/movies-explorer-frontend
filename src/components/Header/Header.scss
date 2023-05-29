@@ -1,7 +1,7 @@
 @use "../../components/App/_vars" as *;
 
 .header {
-  width: 100vw - 10.9375vw;
+  width: calc(100% - 123px);
   height: 74px;
   display: flex;
   justify-content: space-between;
@@ -74,23 +74,17 @@
   }
 }
 
-@media screen and (max-width: 1200px) {
-  .header {
-    max-width: 100% - 11.7188%;
-    transition: all .3s;
-  }
-}
-
 @media screen and (max-width: 949px) {
   .header {
-    max-width: 100% - 7.8125%;
+    max-width: calc(100% - 42px);
+    width: 100% - 5.725%;
     transition: all .3s;
   }
 }
 
 @media screen and (max-width: 767px) {
   .header {
-    max-width: 100% - 13.3333%;
+    max-width: calc(100% - 28px);
     transition: all .3s;
   }
 }

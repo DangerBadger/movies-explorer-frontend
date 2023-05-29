@@ -1,0 +1,23 @@
+@use "../../components/App/vars" as *;
+
+.section__header {
+  margin: 0 0 70px;
+  padding-bottom: 23px;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+  letter-spacing: -0.04em;
+  color: $text-white;
+  width: 100%;
+  border-bottom: 1px solid $dividing-line-color;
+}
+
+@media screen and (max-width: 457px) {
+
+  .section__header {
+    margin-bottom: 60px;
+    padding-bottom: 28px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}

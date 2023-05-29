@@ -8,9 +8,16 @@
   flex-direction: column;
   align-items: center;
   overflow: hidden;
-  width: 100%;
+  // width: 1280px;
   position: relative;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  transition: all .3s;
 }
+
+// @media screen and (max-width: 1280px) {
+//   .app {
+//     width: 1280px;
+//   }
+// }

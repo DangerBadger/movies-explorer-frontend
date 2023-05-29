@@ -47,6 +47,7 @@
   &_opened {
     .burger__button-line:nth-child(1) {
       transform: translateY(10px) rotate(45deg);
+      width: 20px;
     }
 
     .burger__button-line:nth-child(2) {
@@ -55,6 +56,7 @@
 
     .burger__button-line:nth-child(3) {
       transform: translateY(10px) rotate(-45deg);
+      width: 22px;
     }
   }
 
@@ -97,7 +99,7 @@
   }
 
   &__line_mainpage {
-    visibility: hidden;
+    display: none;
   }
 
   &__account-btn {
@@ -154,9 +156,9 @@
 
   .burger__menu_login {
     position: fixed;
-    right: -67.71%;
+    right: -68%;
     top: 0;
-    width: 67.71%;
+    width: 68%;
     height: 100vh;
     padding: 17.5273vh 0 90px;
     flex-direction: column;
@@ -167,14 +169,14 @@
   }
 
   .burger__line_mainpage {
-    visibility: visible;
+    display: block;
   }
 
   .burger_opened {
     .burger__button {
       position: fixed;
       top: 15px;
-      right: 5.35vw;
+      right: 1%;
       margin: 0;
     }
 

@@ -1,0 +1,187 @@
+@use "../../components/App/vars" as *;
+
+.about-project {
+  width: calc(100% - 123px);
+  margin: 0 auto 110px;
+  transition: all .3s;
+
+  &__text-container {
+    margin: 0 0 110px;
+    display: flex;
+    flex-direction: row;
+    transition: all .3s;
+  }
+
+  &__info-container {
+    display: flex;
+    flex-direction: column;
+    width: 48.24%;
+    margin-right: 40px;
+  }
+
+  &__info-container:last-of-type {
+    margin-right: 0;
+  }
+
+  &__subheader {
+    margin: 0 0 26px;
+    padding: 0;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: -0.04em;
+    color: $text-white;
+  }
+
+  &__info {
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: $text-white;
+  }
+
+  &__scheme-container {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: repeat(2, 36px);
+    transition: all .3s;
+  }
+
+  &__week {
+    margin: 0;
+    padding: 9px 0 0;
+    background-color: $button-grey;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: $text-white;
+  }
+
+  &__week_green {
+    background-color: $button-green;
+    color: $text-black;
+  }
+
+  &__theme {
+    margin: 0;
+    padding: 14px 0 0;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: $text-grey;
+  }
+}
+
+@media screen and (max-width: 949px) {
+  .about-project {
+    width: calc(100% - 83px);
+    margin-bottom: 90px;
+
+    &__text-container {
+      margin-bottom: 93px;
+    }
+
+    &__info-container {
+      margin-right: 30px;
+    }
+
+    &__subheader {
+      margin-bottom: 22px;
+    }
+
+    &__info {
+      font-size: 12px;
+      line-height: 18px;
+    }
+
+    &__scheme-container {
+      grid-template-columns: 20.958% 79.042%;
+      grid-template-rows: repeat(2, 36px);
+    }
+
+    &__theme {
+      font-weight: 400;
+      padding-top: 13px;
+    }
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .about-project__text-container {
+    margin-bottom: 75px;
+    flex-direction: column;
+  }
+
+  .about-project__info-container {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 56px;
+  }
+
+  .about-project__scheme-container {
+    grid-template-columns: 28% 72%;
+  }
+
+  .about-project__week {
+    padding-top: 10px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .about-project__theme {
+    padding-top: 10px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
+@media screen and (max-width: 457px) {
+  .about-project {
+    width: calc(100% - 19px);
+
+    &__text-container {
+      margin-bottom: 60px;
+      flex-direction: column;
+    }
+
+    &__info-container {
+      margin-bottom: 56px;
+    }
+
+    &__info-container:last-of-type {
+      margin-bottom: 0;
+    }
+
+    &__subheader {
+      margin-bottom: 16px;
+      font-size: 18px;
+      line-height: 22px;
+    }
+
+    &__info {
+      font-size: 11px;
+      line-height: 16px;
+    }
+
+    &__scheme-container {
+      grid-template-columns: 35.211% 64.789%;
+      grid-template-rows: repeat(2, 35px);
+    }
+
+    &__week {
+      padding-top: 11px;
+      font-size: 11px;
+      line-height: 13px;
+    }
+
+    &__theme {
+      padding-top: 10px;
+      font-size: 11px;
+      line-height: 13px;
+    }
+  }
+}
