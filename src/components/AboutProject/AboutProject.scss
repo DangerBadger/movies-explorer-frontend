@@ -2,7 +2,7 @@
 
 .about-project {
   width: calc(100% - 123px);
-  margin: 0 auto 110px;
+  margin: 0 auto 105px;
   transition: all .3s;
 
   &__text-container {
@@ -79,10 +79,10 @@
 @media screen and (max-width: 949px) {
   .about-project {
     width: calc(100% - 83px);
-    margin-bottom: 90px;
+    margin-bottom: 87px;
 
     &__text-container {
-      margin-bottom: 93px;
+      margin-bottom: 96px;
     }
 
     &__info-container {
@@ -142,6 +142,7 @@
 @media screen and (max-width: 457px) {
   .about-project {
     width: calc(100% - 19px);
+    margin-bottom: 58px;
 
     &__text-container {
       margin-bottom: 60px;

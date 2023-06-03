@@ -1,0 +1,232 @@
+@use "../../components/App/vars" as *;
+
+.about-me {
+  margin: 0 calc(70px - 8.5px);
+  padding: 110px 0 125px;
+
+  &__bio-container {
+    display: flex;
+    margin: 0 0 97px;
+    padding: 0;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  &__info-container {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    margin: 0;
+    transition: all .3s;
+  }
+
+  &__name {
+    margin: -4px 0 18px;
+    padding: 0;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 116%;
+    letter-spacing: -0.04em;
+    color: $text-white;
+  }
+
+  &__info {
+    margin: 0 0 26px;
+    padding: 0;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 111%;
+    color: $text-white;
+    mix-blend-mode: normal;
+  }
+
+  &__bio {
+    margin: 0 0 99px;
+    padding: 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 157%;
+    color: $text-white;
+    mix-blend-mode: normal;
+  }
+
+  &__my-git {
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: $text-white;
+    transition: opacity 0.2s linear 0.05s;
+  }
+
+  &__my-git:hover {
+    opacity: 0.7;
+  }
+
+  &__photo {
+    display: block;
+    width: 270px;
+    height: 327px;
+    border-radius: 10px;
+    transform: translateY(-5px);
+  }
+
+  &__portfolio-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &__portfolio {
+    margin: 0 0 48px;
+    padding: 0;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 111%;
+    color: $text-grey;
+    mix-blend-mode: normal;
+  }
+
+  &__projects {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  &__project {
+    width: 100%;
+  }
+
+  &__link-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__project-link {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 21px;
+    padding: 0;
+    text-decoration: none;
+    width: 100%;
+    height: 50px;
+    transition: opacity 0.2s linear 0.05s;
+  }
+
+  &__project-link:hover {
+    opacity: 0.7;
+  }
+
+  &__link-line {
+    margin: 0 0 18px;
+    border: none;
+    height: 1px;
+    background-color: #424242;
+    width: 100%;
+    box-sizing: border-box;
+    transform: translateY(-1px);
+  }
+
+  &__project-link-text {
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 167%;
+    letter-spacing: -0.04em;
+    color: $text-white;
+  }
+
+  &__project-link-arrow {
+    margin: 0;
+    padding: 0;
+    width: 18px;
+    height: 54px;
+    transform: translateX(-5px);
+  }
+}
+
+
+@media screen and (max-width: 1085px) {
+  .about-me__info-container {
+    width: 470px;
+  }
+}
+
+@media screen and (max-width: 949px) {
+  .about-me {
+    margin: 0 calc(50px - 8.5px);
+    padding-top: 90px;
+    padding-bottom: 90px;
+
+    &__bio-container {
+      margin-bottom: 87px;
+    }
+
+
+    &__info-container {
+      width: 364px;
+    }
+
+    &__name {
+      margin-bottom: 16px;
+      font-size: 40px;
+      line-height: 100%;
+    }
+
+    &__info {
+      margin-bottom: 20px;
+      font-size: 12px;
+      line-height: 150%;
+    }
+
+    &__bio {
+      margin-bottom: 87px;
+      font-size: 12px;
+      line-height: 150%;;
+    }
+
+    &__photo {
+      width: 255px;
+      height: 307px;
+    }
+
+    &__portfolio {
+      margin-bottom: 49px;
+    }
+
+    &__project-link-text {
+      font-size: 28px;
+      line-height: 179%;
+    }
+
+    &__project-link-arrow {
+      margin: 0;
+      padding: 0;
+      width: 18px;
+      height: 54px;
+      transform: translateX(-5px);
+    }
+  }
+}
+
+@media screen and (max-width: 449px) {
+  .about-me {
+    margin: 0 calc(14px - 8.5px);
+    padding-top: 70px;
+    padding-bottom: 70px;
+
+    &__bio-container {
+      margin-bottom: 70px;
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+
+    &__info-container {
+      width: 292px;
+    }
+  }
+}
