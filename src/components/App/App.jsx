@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import './App.scss';
 
-import Main from '../Main/Main';
 import Header from '../Header/Header';
+import Main from '../Main/Main';
+import Footer from '../Footer/Footer';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -29,6 +30,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
       </Routes>
+
+      <Footer />
     </div>
   );
 }
