@@ -5,7 +5,7 @@ import SectionHeader from '../SectionHeader/SectionHeader';
 function Techs() {
   return (
     <section className="techs">
-      <SectionHeader text="Технологии" />
+      <SectionHeader text="Технологии" id="techs" />
       <h3 className="techs__subheader">7 технологий</h3>
       <p className="techs__text">На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</p>
       <ul className="techs__list">

@@ -3,6 +3,7 @@
 .about-me {
   margin: 0 calc(70px - 8.5px);
   padding: 110px 0 125px;
+  scroll-behavior: smooth;
 
   &__bio-container {
     display: flex;

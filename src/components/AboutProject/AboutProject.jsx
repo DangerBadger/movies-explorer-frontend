@@ -5,7 +5,7 @@ import SectionHeader from '../SectionHeader/SectionHeader';
 function AboutProject() {
   return (
     <section className="about-project">
-      <SectionHeader text="О проекте" />
+      <SectionHeader text="О проекте" id="project" />
       <div className="about-project__text-container">
         <div className="about-project__info-container">
           <h3 className="about-project__subheader">Дипломный проект включал 5 этапов</h3>

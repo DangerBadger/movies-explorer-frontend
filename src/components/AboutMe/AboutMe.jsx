@@ -8,7 +8,7 @@ import SectionHeader from '../SectionHeader/SectionHeader';
 function AbutMe() {
   return (
     <section className="about-me">
-      <SectionHeader text="Студент" />
+      <SectionHeader text="Студент" id="student" />
       <div className="about-me__bio-container">
         <div className="about-me__info-container">
           <p className="about-me__name">Кирилл</p>

@@ -1,1 +1,100 @@
 @use "../../components/App/vars" as *;
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  margin: 79px auto 20px;
+  width: calc(100% - 123px);
+  transition: all .3s;
+
+  &__text {
+    margin: 0;
+    padding: 0 0 20px;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    color: $text-grey;
+    width: 100%;
+    border-bottom: 1px solid #424242;
+    transition: all .3s;
+  }
+
+  &__copyright-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 20px 0 0;
+    width: 100%;
+  }
+
+  &__copyright {
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: $text-white;
+  }
+
+  &__link {
+    margin: 0 20px 0 0;
+    padding: 0;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: $text-white;
+    transition: opacity .4s linear .05s;
+  }
+
+  &__link:hover {
+    opacity: 0.7;
+  }
+
+  &__link:last-of-type {
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 949px) {
+  .footer {
+    width: calc(100% - 47px);
+  }
+}
+
+@media screen and (max-width: 449px) {
+  .footer {
+    width: calc(100% - 3px);
+
+    &__text {
+      padding-bottom: 21px;
+      font-size: 12px;
+      line-height: 15px;
+    }
+
+    &__copyright-container {
+      flex-direction: column-reverse;
+      justify-content: flex-start;
+      text-align: center;
+      padding-top: 30px;
+    }
+
+    &__copyright {
+      font-size: 12px;
+      line-height: 15px;
+    }
+
+    &__link {
+      display: flex;
+      flex-direction: column;
+      margin: 0 0 12px;
+      font-size: 12px;
+      line-height: 15px;
+    }
+
+    &__link:last-of-type {
+      margin-bottom: 30px;
+    }
+  }
+}
