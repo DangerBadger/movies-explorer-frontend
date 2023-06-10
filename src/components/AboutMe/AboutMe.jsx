@@ -23,37 +23,6 @@ function AbutMe() {
         </div>
         <img src={Me} className="about-me__photo" alt="Фото" />
       </div>
-      <div className="about-me__portfolio-container">
-        <h3 className="about-me__portfolio">Портфолио</h3>
-        <ul className="about-me__projects">
-          <li className="about-me__project">
-            <div className="about-me__link-container">
-              <Link to="https://github.com/DangerBadger/how-to-learn" target="_blank" className="about-me__project-link">
-                <p className="about-me__project-link-text">Статичный сайт</p>
-                <img alt="Стрелка ссылки" src={LinkArrow} className="about-me__project-link-arrow" />
-              </Link>
-              <hr className="about-me__link-line" />
-            </div>
-          </li>
-          <li className="about-me__project">
-            <div className="about-me__link-container">
-              <Link to="https://github.com/DangerBadger/russian-travel" target="_blank" className="about-me__project-link">
-                <p className="about-me__project-link-text">Адаптивный сайт</p>
-                <img alt="Стрелка ссылки" src={LinkArrow} className="about-me__project-link-arrow" />
-              </Link>
-              <hr className="about-me__link-line" />
-            </div>
-          </li>
-          <li className="about-me__project">
-            <div className="about-me__link-container">
-              <Link to="https://github.com/DangerBadger/react-mesto-api-full-gha" target="_blank" className="about-me__project-link">
-                <p className="about-me__project-link-text">Одностраничное приложение</p>
-                <img alt="Стрелка ссылки" src={LinkArrow} className="about-me__project-link-arrow" />
-              </Link>
-            </div>
-          </li>
-        </ul>
-      </div>
     </section>
   );
 }
