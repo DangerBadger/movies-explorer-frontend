@@ -5,6 +5,7 @@ import './App.scss';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
+import PageNotFound from '../PageNotFound/PageNotFound';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -29,6 +30,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
 
       <Footer />

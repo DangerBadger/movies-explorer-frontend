@@ -26,6 +26,7 @@
     "jsx-a11y/click-events-have-key-events": "warn",
     "no-restricted-syntax": "warn",
     "prefer-template": "warn",
+    "react/jsx-no-useless-fragment": "warn",
     "no-underscore-dangle": "off",
     "comma-dangle": ["error", {
       "arrays": "always-multiline",
