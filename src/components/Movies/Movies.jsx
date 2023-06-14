@@ -1,11 +1,11 @@
 import './Movies.scss';
 
-import Promo from '../Promo/Promo';
+import SearchForm from '../SearchForm/SearchForm';
 
 function Movies() {
   return (
     <main className="movies">
-      <Promo />
+      <SearchForm />
     </main>
   );
 }

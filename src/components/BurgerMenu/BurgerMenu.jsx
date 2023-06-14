@@ -32,13 +32,13 @@ function BurgerMenu({ isOpened, onClose, openBurger }) {
       <nav className="burger__menu_login">
         <ul className="burger__lines">
           <li className="burger__line burger__line_mainpage">
-            <NavLink to="/" className={linkActivator}>Главная</NavLink>
+            <NavLink to="/" onClick={onClose} className={linkActivator}>Главная</NavLink>
           </li>
           <li className="burger__line">
-            <NavLink to="*" className={linkActivator}>Фильмы</NavLink>
+            <NavLink to="movies" onClick={onClose} className={linkActivator}>Фильмы</NavLink>
           </li>
           <li className="burger__line">
-            <NavLink to="*" className={linkActivator}>Сохранённые фильмы</NavLink>
+            <NavLink to="*" onClick={onClose} className={linkActivator}>Сохранённые фильмы</NavLink>
           </li>
         </ul>
         <Link to="*" className="burger__account-btn">

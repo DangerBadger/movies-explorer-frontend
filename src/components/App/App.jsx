@@ -4,6 +4,7 @@ import './App.scss';
 
 import Header from '../Header/Header';
 import Main from '../Main/Main';
+import Movies from '../Movies/Movies';
 import Footer from '../Footer/Footer';
 import PageNotFound from '../PageNotFound/PageNotFound';
 
@@ -30,6 +31,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="movies" element={<Movies />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
 
