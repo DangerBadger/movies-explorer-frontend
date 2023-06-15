@@ -5,7 +5,7 @@ import Magnifier from '../../images/search.svg';
 function SearchForm() {
   return (
     <section className="search-form">
-      <form className="searchForm__form-container">
+      <form className="search-form__form-container">
         <fieldset className="search-form__fieldset">
           <div className="search-form__inputContainer">
             <input type="text" placeholder="Фильм" className="search-form__input" />
@@ -16,8 +16,9 @@ function SearchForm() {
           <div className="search-form__checkbox-container">
             <label className="search-form__switch" htmlFor="checkbox">
               <input type="checkbox" className="search-form__checkbox" id="checkbox" />
-              <span className="slider circle" />
+              <span className="search-form__slider" />
             </label>
+            <p className="search-form__short-films">Короткометражки</p>
           </div>
         </fieldset>
       </form>
