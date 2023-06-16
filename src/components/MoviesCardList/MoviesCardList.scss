@@ -1,7 +1,20 @@
 @use "../../components/App/vars" as *;
 
-.movieCardList__cards {
+.movieCardList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
   margin: 0;
-  padding: 0;
-  list-style: none;
+
+  &__cards {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 390px);
+    grid-template-rows: repeat(4, 319px);
+    grid-column-gap: 28px;
+    grid-row-gap: 32px;
+  }
 }
