@@ -1,5 +1,6 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable react/jsx-closing-tag-location */
+import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import './MoviesCard.scss';
@@ -8,9 +9,15 @@ import Saved from '../../images/saved.svg';
 import Delete from '../../images/delete-card.svg';
 
 function MoviesCard({ card }) {
+  const [isLiked, setIsLiked] = useState(false);
+
   const { pathname } = useLocation();
 
   const { nameRU, duration, image } = card;
+
+  const toggleSaveBtn = () => {
+    setIsLiked(!isLiked);
+  };
 
   const getDuration = (time) => {
     const lastDigit = time % 10;
@@ -36,11 +43,14 @@ function MoviesCard({ card }) {
         ? <button type="button" className="movie-card__save-btn movie-card__save-btn_delete">
           <img src={Delete} alt="Удалить" className="movie-card__delete-btn-img" />
         </button>
-        : card.id % 2 === 0
-          ? <button type="button" className="movie-card__save-btn">Сохранить</button>
-          : <button type="button" className="movie-card__save-btn movie-card__save-btn_saved">
-            <img src={Saved} alt="Сохранено" className="movie-card__save-btn-img" />
-          </button>}
+        : <button
+            type="button"
+            onClick={toggleSaveBtn}
+            className={`movie-card__save-btn ${isLiked && 'movie-card__save-btn_saved'}`}
+        >
+          {isLiked
+            ? <img src={Saved} alt="Сохранено" className="movie-card__save-btn-img" /> : 'Сохранить'}
+        </button>}
     </div>
   );
 }

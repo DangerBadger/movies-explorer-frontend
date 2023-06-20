@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
 
-import './Movies.scss';
+import './SavedMovies.scss';
 
 import SearchForm from '../SearchForm/SearchForm';
 import Preloader from '../Preloader/Preloader';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 
 // Временный статичный массив фильмов
-import moviesArray from '../../utils/beatfilm-movies.json';
+import savedMoviesArray from '../../utils/beatfilm-saved-movies.json';
 
-function Movies() {
+function SavedMovies() {
   const [isLoading, setIsLoading] = useState(true);
 
   const hanleLoader = () => {
@@ -22,15 +22,15 @@ function Movies() {
   }, []);
 
   return (
-    <main className="movies">
+    <main className="saved-movies">
       <SearchForm />
       {
         isLoading
           ? <Preloader />
-          : <MoviesCardList moviesArray={moviesArray} />
+          : <MoviesCardList moviesArray={savedMoviesArray} />
       }
     </main>
   );
 }
 
-export default Movies;
+export default SavedMovies;

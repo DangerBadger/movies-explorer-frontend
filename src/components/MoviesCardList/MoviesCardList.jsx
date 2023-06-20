@@ -13,12 +13,12 @@ function MoviesCardList({ moviesArray }) {
     const winSize = window.innerWidth;
 
     const count = () => {
-      if (winSize >= 1280) {
+      if (winSize >= 1169) {
         return 12;
-      } if (winSize < 1280 && winSize >= 768) {
+      } if (winSize < 1169 && winSize >= 739) {
         return 8;
       }
-      return 4;
+      return 5;
     };
     setCardsNumber(count);
   };

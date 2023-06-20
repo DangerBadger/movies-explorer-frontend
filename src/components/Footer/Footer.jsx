@@ -18,7 +18,7 @@ function Footer() {
             <div className="footer__copyright-container">
               <p className="footer__copyright">
                 &copy;
-                {new Date().getFullYear()}
+                {` ${new Date().getFullYear()}`}
               </p>
               <div className="footer__links-container">
                 <Link to="https://practicum.yandex.ru/" target="_blank" className="footer__link">Яндекс.Практикум</Link>

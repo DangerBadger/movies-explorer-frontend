@@ -8,6 +8,7 @@
   width: 360px;
   height: calc(319px - 34px);
   background-color: #222222;
+  transition: all .4s;
 
   &__info-container {
     display: flex;
@@ -28,6 +29,7 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    transition: all .4s;
   }
 
   &__duration {
@@ -47,6 +49,7 @@
     justify-content: space-around;
     margin: 0 0 18px;
     padding: 0;
+    transition: all .4s;
   }
 
   &__poster {
@@ -65,6 +68,7 @@
     font-size: 12px;
     line-height: 92%;
     color: $text-white;
+    cursor: pointer;
     transition: opacity .2s linear .05s;
   }
 
@@ -81,5 +85,54 @@
 
   &__save-btn-img {
     margin: auto;
+  }
+}
+
+@media screen and (max-width: 1169px) {
+  .movie-card {
+    padding-top: 18px;
+    width: 342px;
+    height: calc(309px - 36px);
+
+    &__title {
+      max-width: 224px;
+    }
+
+    &__img-container {
+      width: 342px;
+      height: 190px;
+    }
+  }
+}
+
+
+@media screen and (max-width: 739px) {
+  .movie-card {
+    margin: 0;
+    padding: 14px 0;
+    width: 300px;
+    height: calc(300px - 28px);
+
+    &__info-container {
+      margin: 0 14px 14px;
+    }
+
+    &__title {
+      max-width: 200px;
+      font-size: 12px;
+      line-height: 150%;
+      color: $text-white;
+    }
+
+    &__duration {
+      font-size: 10px;
+      line-height: 180%;
+    }
+
+    &__img-container {
+      width: 300px;
+      height: 168px;
+      margin-bottom: 14px;
+    }
   }
 }

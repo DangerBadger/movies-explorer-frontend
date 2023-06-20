@@ -2,46 +2,27 @@
 
 .header {
   width: calc(100% - 123px);
-  height: 74px;
+  height: calc(74px - 18px);
+  padding-top: 18px;
   display: flex;
   justify-content: space-between;
   transition: all .3s;
 
-  &__logo {
-    height: 38px;
-    width: 38px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: $button-green;
-    margin: 18px 0 0;
-    padding: 0;
-    border-radius: 8px;
-    transition: opacity .2s linear .05s;
-
-    &__logo-img {
-      margin: 0;
-      padding: 0;
-    }
-  }
-
-  &__logo:hover {
-    opacity: 0.8;
-    cursor: pointer;
-  }
-
   &__menu_logout{
     display: flex;
+    align-items: center;
+    padding-bottom: 18px;
   }
 
   &__registration-link {
-    margin: 28px 30px 0 0;
+    margin: 0 30px 0 0;
     padding: 0;
     color: $text-white;
     font-weight: 500;
     font-size: 12px;
     line-height: 16px;
-    transition: opacity 0.2s linear 0.05s;
+    text-decoration: none;
+    transition: all 0.2s linear 0.05s;
   }
 
   &__registration-link:hover {
@@ -65,7 +46,7 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 16px;
-    transition: opacity 0.2s linear 0.05s;
+    transition: all 0.2s linear 0.05s;
   }
 
   &__enter-btn:hover {
@@ -78,13 +59,29 @@
   .header {
     max-width: calc(100% - 42px);
     width: 100% - 5.725%;
-    transition: all .3s;
   }
 }
 
 @media screen and (max-width: 767px) {
   .header {
     max-width: calc(100% - 28px);
-    transition: all .3s;
+  }
+}
+
+@media screen and (max-width: 449px) {
+  .header {
+    max-width: calc(100% - 11px);
+    width: calc(100% - 11px);
+
+    &__registration-link {
+      margin-right: 14px;
+      font-size: 10px;
+    }
+
+    &__enter-btn {
+      width: 54px;
+      height: 26px;
+      font-size: 10px;
+    }
   }
 }

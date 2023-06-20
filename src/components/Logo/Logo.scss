@@ -1,0 +1,18 @@
+@use "../../components/App/_vars" as *;
+
+.logo {
+  height: 38px;
+  width: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $button-green;
+  padding: 0;
+  border-radius: 8px;
+  transition: opacity .2s linear .05s;
+}
+
+.logo:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
