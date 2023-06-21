@@ -1,6 +1,6 @@
 @use "../../components/App/vars" as *;
 
-.section__header {
+.section-header {
   margin: 0 0 70px;
   padding-bottom: 23px;
   font-weight: 400;
@@ -14,7 +14,7 @@
 
 @media screen and (max-width: 457px) {
 
-  .section__header {
+  .section-header {
     margin-bottom: 60px;
     padding-bottom: 28px;
     font-size: 18px;

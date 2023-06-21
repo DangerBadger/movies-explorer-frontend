@@ -64,7 +64,7 @@
     display: flex;
   }
 
-  &__menu_login {
+  &__menu-login {
     display: flex;
     transform: translateY(-19px);
   }
@@ -155,7 +155,7 @@
     transition: transform 0s .5s, background-color .5s, visibility .5s;
   }
 
-  .burger__menu_login {
+  .burger__menu-login {
     position: fixed;
     right: -68%;
     top: 0;
@@ -189,7 +189,7 @@
       transition: transform 0s, background-color .5s, visibility .5s;
     }
 
-    .burger__menu_login {
+    .burger__menu-login {
       position: fixed;
       transform: translateX(-100%);
       visibility: visible;
@@ -235,14 +235,14 @@
 }
 
 @media screen and (max-width: 767px) {
-  .burger__menu_login {
+  .burger__menu-login {
     width: 78%;
     right: -78%;
   }
 }
 
 @media screen and (max-width: 449px) {
-  .burger__menu_login {
+  .burger__menu-login {
     width: 100%;
     right: -100%;
   }

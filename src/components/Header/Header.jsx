@@ -27,7 +27,7 @@ function Header({
                 <BurgerMenu isOpened={isOpened} onClose={onClose} openBurger={openBurger} />
               )
               : (
-                <div className="header__menu_logout">
+                <div className="header__menu-logout">
                   <Link to="signup" className="header__registration-link">Регистрация</Link>
                   <Link to="signin" className="header__enter-btn">Войти</Link>
                 </div>

@@ -22,7 +22,7 @@ function BurgerMenu({ isOpened, onClose, openBurger }) {
           }
         }}
       />
-      <nav className="burger__menu_login">
+      <nav className="burger__menu-login">
         <ul className="burger__lines">
           <li className="burger__line burger__line_mainpage">
             <NavLink to="/" onClick={onClose} className={linkActivator}>Главная</NavLink>
