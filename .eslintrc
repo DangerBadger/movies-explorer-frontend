@@ -7,6 +7,12 @@
     "plugin:react/recommended",
     "airbnb"
 ],
+"parserOptions": {
+  "ecmaFeatures": {
+    "jsx": true
+  },
+    "ecmaVersion": "latest"
+  },
 "plugins": [
   "react",
   "jsx-a11y"
@@ -27,6 +33,7 @@
     "no-restricted-syntax": "warn",
     "prefer-template": "warn",
     "react/jsx-no-useless-fragment": "warn",
+    "no-nested-ternary": "warn",
     "no-underscore-dangle": "off",
     "comma-dangle": ["error", {
       "arrays": "always-multiline",

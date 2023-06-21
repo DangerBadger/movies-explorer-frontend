@@ -8,14 +8,7 @@ function BurgerMenu({ isOpened, onClose, openBurger }) {
     : 'burger__link');
 
   return (
-    <div
-      className={isOpened ? 'burger burger_opened' : 'burger'}
-      onKeyDown={(evt) => {
-        if (evt.key === 'Escape') {
-          onClose();
-        }
-      }}
-    >
+    <div className={isOpened ? 'burger burger_opened' : 'burger'}>
       <button className="burger__button" type="button" onClick={isOpened ? onClose : openBurger}>
         <span className="burger__button-line" />
         <span className="burger__button-line" />

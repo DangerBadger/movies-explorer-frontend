@@ -7,7 +7,7 @@ function SearchForm() {
     <section className="search-form">
       <form className="search-form__form-container">
         <fieldset className="search-form__fieldset">
-          <div className="search-form__inputContainer">
+          <div className="search-form__input-container">
             <input type="text" placeholder="Фильм" className="search-form__input" />
             <button type="submit" className="search-form__button">
               <img src={Magnifier} alt="Поиск" className="search-form__btn-img" />

@@ -66,6 +66,7 @@
 
   &__menu_login {
     display: flex;
+    transform: translateY(-19px);
   }
 
   &__lines {
@@ -140,6 +141,7 @@
 @media screen and (max-width: 949px) {
   .burger__button {
     display: flex;
+    transform: translateY(-19px);
   }
 
   .burger__nav-overlay {
@@ -177,6 +179,7 @@
       top: 15px;
       right: 1%;
       margin: 0;
+      transform: translateY(0);
     }
 
     .burger__nav-overlay {
