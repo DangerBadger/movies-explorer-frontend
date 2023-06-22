@@ -1,6 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
 import './Header.scss';
-import logo from '../../images/logo.svg';
 
 import Logo from '../Logo/Logo';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';

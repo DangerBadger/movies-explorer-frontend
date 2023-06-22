@@ -3,9 +3,13 @@ import './SearchForm.scss';
 import Magnifier from '../../images/search.svg';
 
 function SearchForm() {
+  const submitHeandler = (evt) => {
+    evt.preventDefault();
+  };
+
   return (
     <section className="search-form" aria-label="Поиск фильма">
-      <form className="search-form__form-container">
+      <form className="search-form__form-container" onSubmit={submitHeandler}>
         <fieldset className="search-form__fieldset">
           <div className="search-form__input-container">
             <input type="text" placeholder="Фильм" className="search-form__input" required />
