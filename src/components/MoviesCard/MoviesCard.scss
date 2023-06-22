@@ -112,6 +112,7 @@
     padding: 14px 0;
     width: 300px;
     height: calc(300px - 28px);
+    box-sizing: border-box;
 
     &__info-container {
       margin: 0 14px 14px;

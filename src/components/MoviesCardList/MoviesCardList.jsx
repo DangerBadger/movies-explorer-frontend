@@ -38,14 +38,14 @@ function MoviesCardList({ moviesArray }) {
   const addCardsPage = () => (setCardsPage(cardsPage + 1));
 
   return (
-    <section className="movieCardList">
+    <section className="movieCardList" aria-label="Список фильмов">
       <ul className="movieCardList__cards">
         {moviesArray.slice(0, cardsNumber * cardsPage).map((card) =>
           <li key={card.id} className="movieCardList__card">
             <MoviesCard card={card} />
           </li>)}
       </ul>
-      {moviesArray.length >= cardsNumber && moviesArray.length > cardsNumber * cardsPage
+      {moviesArray.length > cardsNumber * cardsPage
         && <button type="button" className="movieCardList__moreButton" onClick={addCardsPage}>Ещё</button>}
     </section>
   );

@@ -38,6 +38,10 @@
     transition: all .4s;
   }
 
+  &__input:focus {
+    outline: 1px solid $button-blue;
+  }
+
   &__input::placeholder {
     color: $text-grey;
     font-weight: 400;
@@ -141,6 +145,14 @@
     }
   }
 }
+
+@media screen and (max-width: 679px) {
+  .search-form__input {
+    width: calc(87% - 40px);
+  }
+
+}
+
 
 @media screen and (max-width: 449px) {
   .search-form {

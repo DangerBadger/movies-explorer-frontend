@@ -32,10 +32,10 @@ function MoviesCard({ card }) {
 
   return (
     <div className="movie-card">
-      <span className="movie-card__info-container">
+      <div className="movie-card__info-container">
         <p className="movie-card__title">{nameRU}</p>
         <p className="movie-card__duration">{getDuration(duration)}</p>
-      </span>
+      </div>
       <div className="movie-card__img-container">
         <img src={`https://api.nomoreparties.co${image.url}`} alt="{nameRU}" className="movie-card__poster" />
       </div>

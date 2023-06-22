@@ -4,11 +4,11 @@ import Magnifier from '../../images/search.svg';
 
 function SearchForm() {
   return (
-    <section className="search-form">
+    <section className="search-form" aria-label="Поиск фильма">
       <form className="search-form__form-container">
         <fieldset className="search-form__fieldset">
           <div className="search-form__input-container">
-            <input type="text" placeholder="Фильм" className="search-form__input" />
+            <input type="text" placeholder="Фильм" className="search-form__input" required />
             <button type="submit" className="search-form__button">
               <img src={Magnifier} alt="Поиск" className="search-form__btn-img" />
             </button>
