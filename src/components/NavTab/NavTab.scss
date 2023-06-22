@@ -1,0 +1,61 @@
+@use "../../components/App/vars" as *;
+
+.navtab {
+  &__links {
+    list-style: none;
+    margin: 0 auto 30px;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 308px;
+  }
+
+  &__link {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 96px;
+    height: 36px;
+    background-color: $button-grey;
+    border-radius: 10px;
+    transition: opacity .5s;
+  }
+
+  &__link:hover {
+    opacity: 0.6;
+    cursor: pointer;
+  }
+
+  &__anchor {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 17px 0 0 0;
+    text-decoration: none;
+    color: $text-white;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 133%;
+  }
+}
+
+@media screen and (max-width: 449px) {
+  .navtab {
+    &__links {
+      width: 258px;
+      margin-bottom: 17px;
+    }
+
+    &__link {
+      width: 82px;
+      height: 26px;
+    }
+
+    &__anchor {
+      padding-top: 9px;
+      font-size: 10px;
+      line-height: 160%;
+    }
+  }
+}

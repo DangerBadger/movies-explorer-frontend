@@ -1,0 +1,72 @@
+@use "../../components/App/vars" as *;
+
+.movieCardList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(100% - 123px);
+  margin: 72px auto 80px;
+
+  &__cards {
+    margin: 0 0 60px;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 360px);
+    grid-template-rows: repeat(4, 319px);
+    grid-gap: 32px;
+  }
+
+  &__card {
+    margin: 0 auto;
+  }
+
+  &__moreButton {
+    border: 1px solid #424242;
+    border-radius: 8px;
+    width: 320px;
+    height: 36px;
+    background-color: $prime-backgroundcolor;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    color: $text-white;
+    transition: opacity .3s linear .05s, width .4s;
+    cursor: pointer;
+  }
+
+  &__moreButton:hover {
+    opacity: .8;
+  }
+}
+
+@media screen and (max-width: 1169px) {
+  .movieCardList {
+    margin-top: 70px;
+
+    &__cards {
+      grid-template-columns: repeat(2, 342px);
+      grid-template-rows: repeat(4, 309px);
+      grid-column-gap: 24px;
+      grid-row-gap: 35px;
+      margin: 0 0 80px;
+    }
+  }
+}
+
+@media screen and (max-width: 739px) {
+  .movieCardList {
+    margin-top: 40px;
+    margin-bottom: 100px;
+
+    &__cards {
+      grid-template-columns: repeat(1, 300px);
+      grid-template-rows: repeat(5, 271px);
+      grid-gap: 16px;
+    }
+
+    &__moreButton {
+      width: 240px;
+    }
+  }
+}

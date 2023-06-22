@@ -1,0 +1,70 @@
+@use "../../components/App/vars" as *;
+
+.promo{
+  background-color: $grey-backgroundcolor;
+  margin: 20px auto 115px;
+  padding: 0;
+  border-radius: 10px;
+  width: calc(100% - 63px);
+  min-height: 493px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  transition: all .3s;
+
+  &__text {
+    color: $text-white;
+    margin: 160px auto 0;
+    padding: 0;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 116%;
+    letter-spacing: -0.04em;
+    width: 61.14%;
+    transition: all .3s;
+  }
+}
+
+@media screen and (max-width: 949px) {
+  .promo {
+    min-height: 834px;
+    width: calc(100% - 23px);
+    margin-bottom: 90px;
+
+    &__text {
+      font-size: 40px;
+      line-height: 130%;
+      margin-top: 350px;
+      width: 93.408%;
+    }
+  }
+}
+
+@media screen and (max-width: 663px) {
+  .promo {
+    min-height: 690px;
+  }
+
+  .promo__text {
+    font-size: 32px;
+    line-height: 120%;
+  }
+}
+
+@media screen and (max-width: 449px) {
+  .promo {
+    width: calc(100% - 11px);
+    min-height: 586px;
+    margin-top: 14px;
+    margin-bottom: 70px;
+
+    &__text {
+      font-size: 29px;
+      line-height: 128%;
+      width: 100%;
+      margin-top: 220px;
+    }
+  }
+}

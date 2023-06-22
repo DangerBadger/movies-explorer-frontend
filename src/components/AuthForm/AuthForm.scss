@@ -1,0 +1,205 @@
+@use "../../components/App/_vars" as *;
+
+.auth-form {
+  width: 396px;
+  height: 543px;
+  margin: 70px auto;
+  transition: all .4s;
+
+  &__welcome {
+    padding: 0;
+    margin: 40px 0;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    color: $text-white;
+    transition: all .4s;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    height: 396px;
+    justify-content: space-between;
+    align-items: center;
+    transition: all .4s;
+  }
+
+  &__fieldset {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    border: none;
+    width: 100%;
+  }
+
+  &__label {
+    margin: 0 0 5px;
+    padding: 0;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    color: $text-grey;
+  }
+
+  &__input {
+    margin: 0;
+    padding: 0 0 10px;
+    background-color: $prime-backgroundcolor;
+    border: none;
+    border-bottom: 1px solid #424242;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: $text-white;
+    outline: none;
+    box-shadow: 0 0 0px 0 $prime-backgroundcolor inset;
+  }
+
+  &__input:-webkit-autofill,
+  &__input:-webkit-autofill:hover,
+  &__input:-webkit-autofill:focus
+  &__input:-webkit-autofill {
+    -webkit-text-fill-color: $text-white;
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+    transition: background-color 5000s ease-in-out 0s;
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(0,174,255,0.04) 50%,rgba(255,255,255,0) 51%,rgba(0,174,255,0.03) 100%);
+  }
+
+  &__input::placeholder {
+    color: $text-grey;
+    font-size: 10px;
+  }
+
+  &__input:focus {
+    border-color: $button-blue;
+  }
+
+  &__input_incorrect {
+    color: $text-error;
+  }
+
+  &__input-error {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    color: $text-error;
+    display: block;
+    height: 12px;
+    transform: translateY(-2px);
+    width: 396px;
+    margin: 5px 0 7px;
+    padding: 0;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: all .4s;
+  }
+
+  &__input-error:last-of-type {
+    text-overflow: clip;
+    overflow: visible;
+    white-space: normal;
+  }
+
+  &__button {
+    margin: 0 0 16px;
+    padding: 0;
+    width: 396px;
+    height: 45px;
+    background-color: $button-blue;
+    border: none;
+    border-radius: 3px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: $text-white;
+    cursor: pointer;
+    transition: all .3s linear .05s;
+  }
+
+  &__button:hover {
+    opacity: .8;
+  }
+
+  &__button_innactive {
+    opacity: .3;
+  }
+
+  &__button_innactive:hover {
+    opacity: .3;
+  }
+
+  &__auth-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__auth-text {
+    margin: 0 6px 0 0;
+    padding: 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: $text-grey;
+  }
+
+  &__auth-link {
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #4285F4;
+    transition: opacity .3s linear .05s;
+  }
+
+  &__auth-link:hover {
+    opacity: .8;
+  }
+}
+
+@media screen and (max-width: 449px) {
+  .auth-form {
+    width: 260px;
+    height: 694px;
+    margin-top: 56px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__welcome {
+      margin-top: 50px;
+      margin-bottom: 80px;
+    }
+
+    &__form {
+      height: 490px;
+    }
+
+    &__input-error {
+      width: 260px;
+    }
+
+    &__button {
+      margin-bottom: 14px;
+      width: 260px;
+      font-size: 12px;
+      line-height: 15px;
+    }
+
+    &__auth-text {
+      margin-right: 7px;
+      font-size: 12px;
+      line-height: 15px;
+    }
+
+    &__auth-link {
+      font-size: 12px;
+      line-height: 15px;
+    }
+  }
+}
