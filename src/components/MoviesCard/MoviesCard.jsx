@@ -7,6 +7,7 @@ import './MoviesCard.scss';
 
 import Saved from '../../images/saved.svg';
 import Delete from '../../images/delete-card.svg';
+import { getDuration } from '../../utils/utils';
 
 function MoviesCard({ card }) {
   const [isLiked, setIsLiked] = useState(false);
@@ -17,17 +18,6 @@ function MoviesCard({ card }) {
 
   const toggleSaveBtn = () => {
     setIsLiked(!isLiked);
-  };
-
-  const getDuration = (time) => {
-    const lastDigit = time % 10;
-
-    if (lastDigit >= 2 && lastDigit <= 4) {
-      return `${time} минуты`;
-    } if (lastDigit === 1) {
-      return `${time} минутa`;
-    }
-    return `${time} минут`;
   };
 
   return (

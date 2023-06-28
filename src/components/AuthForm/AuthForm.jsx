@@ -7,7 +7,12 @@ import './AuthForm.scss';
 
 import Logo from '../Logo/Logo';
 
-function AuthForm({ isRegisterForm, handleLogin, handleRegistration }) {
+function AuthForm({
+  isRegisterForm,
+  handleLogin,
+  handleRegistration,
+  isSuccess,
+}) {
   const {
     valuesObj,
     errorMessageObj,
@@ -23,8 +28,12 @@ function AuthForm({ isRegisterForm, handleLogin, handleRegistration }) {
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
     if (isValid) {
-      isRegisterForm ? handleRegistration() : handleLogin();
-      resetValidation();
+      isRegisterForm
+        ? handleRegistration(valuesObj.email, valuesObj.password, valuesObj.name)
+        : handleLogin(valuesObj.email, valuesObj.password);
+      if (isSuccess) {
+        resetValidation();
+      }
     }
   };
 

@@ -1,4 +1,6 @@
+/* eslint-disable spaced-comment */
 import { useState, useEffect } from 'react';
+import { systemMessages } from '../../utils/constants';
 
 import './Movies.scss';
 
@@ -6,28 +8,25 @@ import SearchForm from '../SearchForm/SearchForm';
 import Preloader from '../Preloader/Preloader';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 
-// Временный статичный массив фильмов
-import moviesArray from '../../utils/beatfilm-movies.json';
-
-function Movies() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  const hanleLoader = () => {
-    setIsLoading(false);
-  };
-
-  // Временное решение для симуляции работы прелоадера
-  useEffect(() => {
-    setTimeout(hanleLoader, 1500);
-  }, []);
+function Movies({
+  isLoading,
+  handleSearchMovies,
+  isShown,
+  error,
+}) {
+  const [movieCards, setMovieCards] = useState(JSON.parse(localStorage.getItem('movies'))); //JSON.parse(localStorage.getItem('movies'))
 
   return (
     <main className="movies">
-      <SearchForm />
+      <SearchForm handleSearchMovies={handleSearchMovies} />
       {
         isLoading
           ? <Preloader />
-          : <MoviesCardList moviesArray={moviesArray} />
+          : isShown
+            ? movieCards.length === 0
+              ? <p className="movies__error-message">{systemMessages.EMPTY_RESULT}</p>
+              : <MoviesCardList movieCards={movieCards} isLoading={isLoading} />
+            : error && <p className="movies__error-message">{systemMessages.REAUEST_ERROR}</p>
       }
     </main>
   );

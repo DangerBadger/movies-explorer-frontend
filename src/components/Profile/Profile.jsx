@@ -5,7 +5,7 @@ import useFormValidation from '../../utils/hooks/useFormValidation';
 
 import './Profile.scss';
 
-function Profile({ onUpdate, handleLogout }) {
+function Profile({ onUpdate, handleSignout }) {
   const {
     valuesObj,
     setValuesObj,
@@ -104,7 +104,7 @@ function Profile({ onUpdate, handleLogout }) {
               : <button className="profile__edit-btn" type="button" onClick={disableInputEdit}>Отмена</button>
         }
       </form>
-      <button className="profile__edit-btn profile__edit-btn_logout" type="button" onClick={handleLogout}>Выйти из аккаунта</button>
+      <button className="profile__edit-btn profile__edit-btn_logout" type="button" onClick={handleSignout}>Выйти из аккаунта</button>
     </main>
   );
 }
