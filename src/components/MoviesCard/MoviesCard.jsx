@@ -1,7 +1,9 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable react/jsx-closing-tag-location */
-import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useState, useContext, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import CurrentUserContext from '../../context/CurrentUserContext';
 
 import './MoviesCard.scss';
 
@@ -9,15 +11,30 @@ import Saved from '../../images/saved.svg';
 import Delete from '../../images/delete-card.svg';
 import { getDuration } from '../../utils/utils';
 
-function MoviesCard({ card }) {
+function MoviesCard({ card, toggleMovieSaved }) {
   const [isLiked, setIsLiked] = useState(false);
 
-  const { pathname } = useLocation();
+  const currentUser = useContext(CurrentUserContext);
 
-  const { nameRU, duration, image } = card;
+  const { pathname } = useLocation();
+  const movies = pathname === '/movies';
+
+  const {
+    nameRU,
+    duration,
+    image,
+    trailerLink,
+    owner,
+    liked, // ????
+  } = card;
+
+  useEffect(() => {
+    setIsLiked(owner === currentUser._id);
+  }, []);
 
   const toggleSaveBtn = () => {
     setIsLiked(!isLiked);
+    toggleMovieSaved(card);
   };
 
   return (
@@ -26,11 +43,11 @@ function MoviesCard({ card }) {
         <p className="movie-card__title">{nameRU}</p>
         <p className="movie-card__duration">{getDuration(duration)}</p>
       </div>
-      <div className="movie-card__img-container">
-        <img src={`https://api.nomoreparties.co${image.url}`} alt="{nameRU}" className="movie-card__poster" />
-      </div>
-      {pathname === '/saved-movies'
-        ? <button type="button" className="movie-card__save-btn movie-card__save-btn_delete">
+      <Link to={trailerLink} target="_blank" className="movie-card__img-container">
+        <img src={movies ? `https://api.nomoreparties.co${image.url}` : image} alt="{nameRU}" className="movie-card__poster" />
+      </Link>
+      {!movies
+        ? <button type="button" onClick={toggleSaveBtn} className="movie-card__save-btn movie-card__save-btn_delete">
           <img src={Delete} alt="Удалить" className="movie-card__delete-btn-img" />
         </button>
         : <button

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { systemMessages } from '../../utils/constants';
 
 import './SavedMovies.scss';
 
@@ -6,28 +6,31 @@ import SearchForm from '../SearchForm/SearchForm';
 import Preloader from '../Preloader/Preloader';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 
-// Временный статичный массив фильмов
-import savedMoviesArray from '../../utils/beatfilm-saved-movies.json';
-
-function SavedMovies() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  const hanleLoader = () => {
-    setIsLoading(false);
-  };
-
-  // Временное решение для симуляции работы прелоадера
-  useEffect(() => {
-    setTimeout(hanleLoader, 1500);
-  }, []);
-
+function SavedMovies({
+  saved,
+  isLoading,
+  moviesList,
+  handleSearchMovies,
+  isShown,
+  error,
+  toggleMovieSaved,
+  category,
+}) {
   return (
     <main className="saved-movies">
-      <SearchForm />
+      <SearchForm handleSearchMovies={handleSearchMovies} category={category} />
       {
         isLoading
           ? <Preloader />
-          : <MoviesCardList moviesArray={savedMoviesArray} />
+          : isShown
+            ? moviesList.length === 0
+              ? <p className="saved-movies__error-message">{systemMessages.EMPTY_RESULT}</p>
+              : <MoviesCardList
+                  moviesList={moviesList}
+                  toggleMovieSaved={toggleMovieSaved}
+                  saved={saved}
+              />
+            : error && <p className="saved-movies__error-message">{error}</p>
       }
     </main>
   );

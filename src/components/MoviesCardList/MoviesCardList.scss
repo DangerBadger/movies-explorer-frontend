@@ -8,12 +8,12 @@
   margin: 72px auto 80px;
 
   &__cards {
-    margin: 0 0 60px;
+    margin: 0px;
     padding: 0;
     list-style: none;
     display: grid;
     grid-template-columns: repeat(3, 360px);
-    grid-template-rows: repeat(4, 319px);
+    grid-template-rows: repeat(auto-fit, 319px);
     grid-gap: 32px;
   }
 
@@ -22,6 +22,7 @@
   }
 
   &__moreButton {
+    margin-top: 60px;
     border: 1px solid #424242;
     border-radius: 8px;
     width: 320px;
@@ -46,10 +47,13 @@
 
     &__cards {
       grid-template-columns: repeat(2, 342px);
-      grid-template-rows: repeat(4, 309px);
+      grid-template-rows: repeat(auto-fit, 309px);
       grid-column-gap: 24px;
       grid-row-gap: 35px;
-      margin: 0 0 80px;
+    }
+
+    &__moreButton {
+      margin-top: 80px;
     }
   }
 }
@@ -61,7 +65,7 @@
 
     &__cards {
       grid-template-columns: repeat(1, 300px);
-      grid-template-rows: repeat(5, 271px);
+      grid-template-rows: repeat(auto-fit, 271px);
       grid-gap: 16px;
     }
 

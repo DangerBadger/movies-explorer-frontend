@@ -52,6 +52,18 @@ class Api {
   }
 
   saveNewMovie(movieData) {
+    const {
+      country,
+      director,
+      duration,
+      year,
+      description,
+      image,
+      trailerLink,
+      nameRU,
+      nameEN,
+      id,
+    } = movieData;
     return this._request(
       '/movies',
       {
@@ -59,10 +71,17 @@ class Api {
         credentials: 'include',
         headers: this._headers,
         body: JSON.stringify({
-          ...movieData,
-          image: `https://api.nomoreparties.co${movieData.image.url}`,
-          thumbnail: `https://api.nomoreparties.co${movieData.image.formats.thumbnail.url}`,
-          movieId: String(movieData.id),
+          country,
+          director,
+          duration,
+          year,
+          description,
+          image: `https://api.nomoreparties.co${image.url}`,
+          trailerLink,
+          nameRU,
+          nameEN,
+          thumbnail: `https://api.nomoreparties.co${image.formats.thumbnail.url}`,
+          movieId: String(id),
         }),
       }
     );

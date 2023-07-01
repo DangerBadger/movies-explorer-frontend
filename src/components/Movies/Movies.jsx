@@ -1,5 +1,4 @@
 /* eslint-disable spaced-comment */
-import { useState, useEffect } from 'react';
 import { systemMessages } from '../../utils/constants';
 
 import './Movies.scss';
@@ -9,24 +8,30 @@ import Preloader from '../Preloader/Preloader';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 
 function Movies({
+  saved,
   isLoading,
   handleSearchMovies,
   isShown,
   error,
+  moviesList,
+  toggleMovieSaved,
+  category,
 }) {
-  const [movieCards, setMovieCards] = useState(JSON.parse(localStorage.getItem('movies'))); //JSON.parse(localStorage.getItem('movies'))
-
   return (
     <main className="movies">
-      <SearchForm handleSearchMovies={handleSearchMovies} />
+      <SearchForm handleSearchMovies={handleSearchMovies} category={category} />
       {
         isLoading
           ? <Preloader />
           : isShown
-            ? movieCards.length === 0
+            ? moviesList.length === 0
               ? <p className="movies__error-message">{systemMessages.EMPTY_RESULT}</p>
-              : <MoviesCardList movieCards={movieCards} isLoading={isLoading} />
-            : error && <p className="movies__error-message">{systemMessages.REAUEST_ERROR}</p>
+              : <MoviesCardList
+                  moviesList={moviesList}
+                  toggleMovieSaved={toggleMovieSaved}
+                  saved={saved}
+              />
+            : error && <p className="movies__error-message">{error}</p>
       }
     </main>
   );

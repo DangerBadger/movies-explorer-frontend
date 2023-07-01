@@ -6,6 +6,10 @@ function useFormValidation() {
   const [isValid, setIsValid] = useState(true);
 
   const validationSettings = {
+    name: {
+      regexp: /^[\u0430-\u044fa-z0-9\s-ёЁ]+$/gi,
+      validationError: 'Введены недопустимые символы или строка пуста',
+    },
     search: {
       validationError: 'Нужно ввести ключевое слово',
       regexp: /[\W\d\wа-я\sё]+/gi,
@@ -24,7 +28,7 @@ function useFormValidation() {
     setValuesObj({ ...valuesObj, [name]: value });
     setErrorMessageObj({ ...errorMessageObj, [name]: validationMessage });
     setIsValid(evt.target.closest('form').checkValidity());
-    if (name === 'search') {
+    if (name === 'search' || name === 'name') {
       customValidation(name, value);
     }
   }

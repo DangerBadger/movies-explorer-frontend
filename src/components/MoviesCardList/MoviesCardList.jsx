@@ -9,10 +9,9 @@ import './MoviesCardList.scss';
 
 import MoviesCard from '../MoviesCard/MoviesCard';
 
-function MoviesCardList({ movieCards }) {
+function MoviesCardList({ moviesList, toggleMovieSaved }) {
   const [cardsNumber, setCardsNumber] = useState(0);
   const [cardsPage, setCardsPage] = useState(1);
-  const [shortMovie, setShortMovie] = useState(false);
 
   const { pathname } = useLocation();
 
@@ -65,16 +64,16 @@ function MoviesCardList({ movieCards }) {
     <section className="movieCardList" aria-label="Список фильмов">
       <ul className="movieCardList__cards">
         {pathname === '/movies'
-          ? movieCards.slice(0, cardsNumber * cardsPage).map((card) =>
+          ? moviesList.slice(0, cardsNumber * cardsPage).map((card) =>
             <li key={card.id} className="movieCardList__card">
-              <MoviesCard card={card} />
+              <MoviesCard card={card} toggleMovieSaved={toggleMovieSaved} />
             </li>)
-          : movieCards.map((card) =>
-            <li key={card.id} className="movieCardList__card">
-              <MoviesCard card={card} />
+          : moviesList.map((card) =>
+            <li key={card._id} className="movieCardList__card">
+              <MoviesCard card={card} toggleMovieSaved={toggleMovieSaved} />
             </li>)}
       </ul>
-      {movieCards.length > cardsNumber * cardsPage && pathname === '/movies'
+      {moviesList.length > cardsNumber * cardsPage && pathname === '/movies'
           && <button type="button" className="movieCardList__moreButton" onClick={addCardsPage}>Ещё</button>}
     </section>
   );

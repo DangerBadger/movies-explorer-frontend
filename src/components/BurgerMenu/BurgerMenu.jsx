@@ -34,7 +34,7 @@ function BurgerMenu({ isOpened, onClose, openBurger }) {
             <NavLink to="saved-movies" onClick={onClose} className={linkActivator}>Сохранённые фильмы</NavLink>
           </li>
         </ul>
-        <Link to="/profile" className="burger__account-btn">
+        <Link to="/profile" className="burger__account-btn" onClick={onClose}>
           <img className="burger__account-img" alt="Иконка кнопки профиль" src={accountImage} />
           <p className="burger__account-btn-text">Аккаунт</p>
         </Link>

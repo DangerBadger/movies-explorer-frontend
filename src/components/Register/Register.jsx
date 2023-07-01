@@ -1,8 +1,13 @@
 import AuthForm from '../AuthForm/AuthForm';
 
-function Register({ handleRegistration, isSuccess }) {
+function Register({ handleRegistration, isSuccess, error }) {
   return (
-    <AuthForm isRegisterForm handleRegistration={handleRegistration} isSuccess={isSuccess} />
+    <AuthForm
+      isRegisterForm
+      handleRegistration={handleRegistration}
+      isSuccess={isSuccess}
+      error={error}
+    />
   );
 }
 

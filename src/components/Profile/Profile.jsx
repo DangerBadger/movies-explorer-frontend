@@ -68,11 +68,11 @@ function Profile({ onUpdate, handleSignout }) {
               id="name"
               name="name"
               minLength={2}
-              maxLength={55}
+              maxLength={30}
               disabled={isBlocked}
               value={valuesObj.name || ''}
               onChange={onChange}
-              className="profile__input"
+              className={`profile__input ${errorMessageObj.name && 'profile__input_incorrect'}`}
               placeholder="Изменить имя"
               required
             />
