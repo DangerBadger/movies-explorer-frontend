@@ -5,3 +5,5 @@
 
 [Ссылка на пулреквест](https://github.com/DangerBadger/movies-explorer-frontend/pull/2)
 
+[Ссылка на фронтенд часть проекта](https://movies-explorer.ckg.nomoredomains.monster/)
+
