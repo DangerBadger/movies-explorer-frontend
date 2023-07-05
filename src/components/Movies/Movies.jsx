@@ -5,6 +5,7 @@ import './Movies.scss';
 
 import SearchForm from '../SearchForm/SearchForm';
 import Preloader from '../Preloader/Preloader';
+import ServerMessage from '../ServerMessage/ServerMessage';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 
 function Movies({
@@ -25,13 +26,13 @@ function Movies({
           ? <Preloader />
           : isShown
             ? moviesList.length === 0
-              ? <p className="movies__error-message">{systemMessages.EMPTY_RESULT}</p>
+              ? <ServerMessage error={systemMessages.EMPTY_RESULT} />
               : <MoviesCardList
                   moviesList={moviesList}
                   toggleMovieSaved={toggleMovieSaved}
                   saved={saved}
               />
-            : error && <p className="movies__error-message">{error}</p>
+            : error && <ServerMessage error={error} />
       }
     </main>
   );

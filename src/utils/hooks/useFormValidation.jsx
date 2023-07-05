@@ -12,7 +12,7 @@ function useFormValidation() {
     },
     search: {
       validationError: 'Нужно ввести ключевое слово',
-      regexp: /[\W\d\wа-я\sё]+/gi,
+      regexp: /[\W\d\wа-я\sёЁ]+/gi,
     },
   };
 

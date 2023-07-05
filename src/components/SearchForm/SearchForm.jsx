@@ -17,7 +17,7 @@ function SearchForm({ handleSearchMovies, category }) {
   const [isShortMovie, setIsShortMovie] = useState(false);
 
   useEffect(() => {
-    setIsShortMovie(localStorage.getItem(`short${category}`) === 'true'); // Попробовать переделать на стэйт isShort в App
+    setIsShortMovie(localStorage.getItem(`short${category}`) === 'true');
     setMovieName(localStorage.getItem(`search${category}`) || '');
     resetValidation();
   }, []);

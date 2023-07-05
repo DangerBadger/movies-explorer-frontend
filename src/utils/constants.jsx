@@ -4,6 +4,10 @@ export const systemMessages = {
   REQUEST_ERROR: `Во\u00A0время запроса произошла ошибка.
   Возможно, проблема с\u00A0соединением или сервер недоступен.
   Подождите немного и\u00A0попробуйте ещё раз`,
+  EMAIL_CONFLICT: 'Пользователь с\u00A0таким email уже существует',
+  REGISTRATION_ERROR: 'При регистрации пользователя произошла ошибка.',
+  WRONG_CREDENTIALS: 'Вы\u00A0ввели неправильный логин или пароль.',
+  DEFAULT_ERROR: 'На\u00A0сервере произошла ошибка.',
 };
 
 export const SHORTMOVIE_DURATION = 40;

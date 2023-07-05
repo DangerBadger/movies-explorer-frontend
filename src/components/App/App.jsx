@@ -38,7 +38,7 @@ function App() {
   const [savedMovies, setSavedMovies] = useState([]);
   const [isCardsShown, setIsCardsShown] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [serverError, setServerError] = useState(''); // ''
+  const [serverError, setServerError] = useState('');
 
   const isPopupOpened = isBurgerOpened;
 
@@ -85,13 +85,13 @@ function App() {
           setServerError(err);
         });
     } else {
-      movieFormatFixer(movie); // Проверить нужен ли он тут?
+      movieFormatFixer(movie);
       mainApi.saveNewMovie(movie)
         .then((savedMovie) => {
           movie.owner = currentUser._id;
           movie._id = savedMovie._id;
-          const savedMoviesArr = savedMovies.map((i) => i); // попробовать
-          savedMoviesArr.push(savedMovie); // setSavedMovies(savedMuvies.push(savedMovie));
+          const savedMoviesArr = savedMovies.map((i) => i);
+          savedMoviesArr.push(savedMovie);
           setSavedMovies(savedMoviesArr);
           localStorage.setItem('savedMovies', JSON.stringify(savedMoviesArr));
         })
@@ -129,7 +129,9 @@ function App() {
       })
       .catch((err) => {
         console.warn(err);
-        setServerError(systemMessages.REQUEST_ERROR);
+        if (err === 'Ошибка 404 Not Found') {
+          setServerError(systemMessages.REQUEST_ERROR);
+        }
       })
       .finally(() => setIsLoading(false));
   };
@@ -152,8 +154,12 @@ function App() {
       })
       .catch((err) => {
         console.warn(err);
-        setServerError(err);
         setIsSuccess(false);
+        if (err === 'Ошибка 401 Unauthorized') {
+          setServerError(systemMessages.WRONG_CREDENTIALS);
+        } else {
+          setServerError(systemMessages.DEFAULT_ERROR);
+        }
       });
   };
 
@@ -170,7 +176,11 @@ function App() {
         console.warn(err);
         setIsSuccess(false);
         if (err === 'Ошибка 409 Conflict') {
-          setServerError('Пользователь с таким email уже существует');
+          setServerError(systemMessages.EMAIL_CONFLICT);
+        } else if (err === 'Ошибка 400 Bad Request') {
+          setServerError(systemMessages.REGISTRATION_ERROR);
+        } else {
+          setServerError(systemMessages.DEFAULT_ERROR);
         }
       });
   };
@@ -190,7 +200,16 @@ function App() {
       .then((res) => {
         setCurrentUser(res);
       })
-      .catch((err) => console.warn(err));
+      .catch((err) => {
+        console.warn(err);
+        if (err === 'Ошибка 409 Conflict') {
+          setServerError(systemMessages.EMAIL_CONFLICT);
+        } else if (err === 'Ошибка 400 Bad Request') {
+          setServerError(systemMessages.REGISTRATION_ERROR);
+        } else {
+          setServerError(systemMessages.DEFAULT_ERROR);
+        }
+      });
     setCurrentUser(userInfo);
   };
 
@@ -294,7 +313,8 @@ function App() {
                 component={Profile}
                 onUpdate={handleUpdateUser}
                 handleSignout={handleSignout}
-                serverError={serverError}
+                error={serverError}
+                setError={setServerError}
               />
             }
           />
@@ -308,7 +328,15 @@ function App() {
               />
             }
           />
-          <Route path="signin" element={<Login handleLogin={handleLogin} />} />
+          <Route
+            path="signin"
+            element={
+              <Login
+                handleLogin={handleLogin}
+                error={serverError}
+              />
+            }
+          />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
 

@@ -1,0 +1,19 @@
+@use "../../components/App/vars" as *;
+
+.server-message {
+  text-align: center;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+  letter-spacing: -0.04em;
+  color: $text-white;
+  width: 90%;
+  transition: all .4s;
+}
+
+@media screen and (max-width: 594px) {
+  .server-message {
+    font-size: 18px;
+    line-height: 23px;
+  }
+}

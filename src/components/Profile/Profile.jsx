@@ -1,3 +1,6 @@
+/* eslint-disable react/jsx-indent */
+/* eslint-disable react/jsx-closing-bracket-location */
+/* eslint-disable no-nested-ternary */
 import { useState, useEffect, useContext } from 'react';
 
 import CurrentUserContext from '../../context/CurrentUserContext';
@@ -5,7 +8,14 @@ import useFormValidation from '../../utils/hooks/useFormValidation';
 
 import './Profile.scss';
 
-function Profile({ onUpdate, handleSignout }) {
+import ServerMessage from '../ServerMessage/ServerMessage';
+
+function Profile({
+  onUpdate,
+  handleSignout,
+  error,
+  setError,
+}) {
   const {
     valuesObj,
     setValuesObj,
@@ -26,6 +36,13 @@ function Profile({ onUpdate, handleSignout }) {
   }, []);
 
   useEffect(() => {
+    setValuesObj({
+      name,
+      email,
+    });
+  }, [error]);
+
+  useEffect(() => {
     if (name && email) {
       setValuesObj({
         name,
@@ -33,6 +50,10 @@ function Profile({ onUpdate, handleSignout }) {
       });
     }
   }, [currentUser]);
+
+  useEffect(() => {
+    setError('');
+  }, [isEdited]);
 
   const enableInputEdit = () => setIsBlocked(false);
   const disableInputEdit = () => setIsBlocked(true);
@@ -96,13 +117,20 @@ function Profile({ onUpdate, handleSignout }) {
           </div>
           <span className="profile__input-error">{errorMessageObj.email}</span>
         </div>
-        {
-          isBlocked
-            ? <button className="profile__edit-btn" type="button" onClick={enableInputEdit}>Редактировать</button>
-            : isEdited
-              ? <button className="profile__edit-btn" type="submit">Сохранить</button>
-              : <button className="profile__edit-btn" type="button" onClick={disableInputEdit}>Отмена</button>
-        }
+        <div className="profile__error-box">
+          {error && <ServerMessage error={error} />}
+        </div>
+        {isBlocked
+          ? <button className="profile__edit-btn" type="button" onClick={enableInputEdit}>Редактировать</button>
+          : isEdited
+            ? <button
+                className={`profile__edit-btn ${!isValid && 'profile__edit-btn_disabled'}`}
+                type="submit"
+                disabled={!isValid}
+              >
+                Сохранить
+              </button>
+            : <button className="profile__edit-btn" type="button" onClick={disableInputEdit}>Отмена</button>}
       </form>
       <button className="profile__edit-btn profile__edit-btn_logout" type="button" onClick={handleSignout}>Выйти из аккаунта</button>
     </main>

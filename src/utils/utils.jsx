@@ -15,8 +15,8 @@ export const apiBeatFimMoviesSettings = {
 };
 
 export const mainApiSettings = {
-  // baseUrl: 'https://api.movies-explorer.ckg.nomoredomains.monster',
-  baseUrl: 'http://localhost:3000',
+  baseUrl: 'https://api.movies-explorer.ckg.nomoredomains.monster',
+  // baseUrl: 'http://localhost:3000',
   headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
@@ -38,7 +38,6 @@ export const searchMovies = (filtredList, category) => {
   const regEx = new RegExp(localStorage.getItem(`search${category}`), 'i');
 
   const resultArr = filtredList.filter((movie) => {
-    // movie.owner = 'null';
     if (movie.country) {
       movie.country = 'null';
     }

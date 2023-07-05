@@ -25,7 +25,6 @@ function MoviesCard({ card, toggleMovieSaved }) {
     image,
     trailerLink,
     owner,
-    liked, // ????
   } = card;
 
   useEffect(() => {
