@@ -15,8 +15,8 @@ export const apiBeatFimMoviesSettings = {
 };
 
 export const mainApiSettings = {
-  // baseUrl: 'https://api.movies-explorer.ckg.nomoredomains.monster',
-  baseUrl: 'http://localhost:3000',
+  baseUrl: 'https://api.movies-explorer.ckg.nomoredomains.monster',
+  // baseUrl: 'http://localhost:3000',
   headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
