@@ -15,8 +15,8 @@ export const apiBeatFimMoviesSettings = {
 };
 
 export const mainApiSettings = {
-  baseUrl: 'https://api.movies-explorer.ckg.nomoredomains.monster',
-  // baseUrl: 'http://localhost:3000',
+  // baseUrl: 'https://api.movies-explorer.ckg.nomoredomains.monster',
+  baseUrl: 'http://localhost:3000',
   headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
@@ -24,14 +24,27 @@ export const mainApiSettings = {
 };
 
 export const getDuration = (time) => {
-  const lastDigit = time % 10;
+  let duration;
 
-  if (lastDigit >= 2 && lastDigit <= 4) {
-    return `${time} минуты`;
-  } if (lastDigit === 1) {
-    return `${time} минутa`;
+  if (time / 60 < 1) {
+    const lastDigit = time % 10;
+
+    if (lastDigit >= 2 && lastDigit <= 4) {
+      duration = `${time} минуты`;
+    } if (lastDigit === 1) {
+      duration = `${time} минутa`;
+    }
+    duration = `${time} минут`;
+  } else {
+    const hours = Math.floor(time / 60);
+    const minutes = (time % 60);
+    if (minutes === 0) {
+      duration = `${hours}ч`;
+    } else {
+      duration = `${hours}ч ${minutes}м`;
+    }
   }
-  return `${time} минут`;
+  return duration;
 };
 
 export const searchMovies = (filtredList, category) => {
@@ -43,7 +56,7 @@ export const searchMovies = (filtredList, category) => {
     }
     return regEx.test(movie.nameRU) && (localStorage.getItem(`short${category}`) === 'false' || movie.duration < SHORTMOVIE_DURATION);
   });
-  localStorage.setItem(`found=${category}`, JSON.stringify(resultArr));
+  localStorage.setItem(`found-${category}`, JSON.stringify(resultArr));
   return resultArr;
 };
 

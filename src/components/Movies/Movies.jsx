@@ -1,4 +1,5 @@
 /* eslint-disable spaced-comment */
+import { useEffect } from 'react';
 import { systemMessages } from '../../utils/constants';
 
 import './Movies.scss';
@@ -14,19 +15,29 @@ function Movies({
   handleSearchMovies,
   isShown,
   error,
+  setError,
   moviesList,
   toggleMovieSaved,
   category,
 }) {
+  useEffect(() => {
+    setError('');
+  });
+
   return (
     <main className="movies">
-      <SearchForm handleSearchMovies={handleSearchMovies} category={category} />
+      <SearchForm
+        handleSearchMovies={handleSearchMovies}
+        category={category}
+        isLoading={isLoading}
+        isShown={isShown}
+      />
       {
         isLoading
           ? <Preloader />
           : isShown
             ? moviesList.length === 0
-              ? <ServerMessage error={systemMessages.EMPTY_RESULT} />
+              ? localStorage.getItem(`found-${category}`) && <ServerMessage error={systemMessages.EMPTY_RESULT} />
               : <MoviesCardList
                   moviesList={moviesList}
                   toggleMovieSaved={toggleMovieSaved}

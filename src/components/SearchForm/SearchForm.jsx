@@ -6,11 +6,16 @@ import Magnifier from '../../images/search.svg';
 
 import useFormValidation from '../../utils/hooks/useFormValidation';
 
-function SearchForm({ handleSearchMovies, category }) {
+function SearchForm({
+  handleSearchMovies,
+  category,
+  isLoading,
+}) {
   const {
-    resetValidation,
     errorMessageObj,
+    setErrorMessageObj,
     handleChange,
+    setIsValid,
   } = useFormValidation();
 
   const [movieName, setMovieName] = useState('');
@@ -19,7 +24,7 @@ function SearchForm({ handleSearchMovies, category }) {
   useEffect(() => {
     setIsShortMovie(localStorage.getItem(`short${category}`) === 'true');
     setMovieName(localStorage.getItem(`search${category}`) || '');
-    resetValidation();
+    setIsValid(true);
   }, []);
 
   useEffect(() => {
@@ -30,18 +35,22 @@ function SearchForm({ handleSearchMovies, category }) {
     }
   }, [isShortMovie]);
 
-  const checkboxHandler = () => setIsShortMovie(!isShortMovie);
-
   const searchMovieHandler = (evt) => {
     setMovieName(evt.target.value);
     handleChange(evt);
   };
 
+  const checkboxHandler = () => setIsShortMovie(!isShortMovie);
+
   const submitHandler = (evt) => {
     evt.preventDefault();
-    localStorage.setItem(`short${category}`, isShortMovie.toString());
-    localStorage.setItem(`search${category}`, movieName);
-    handleSearchMovies(category);
+    if (movieName === '') {
+      setErrorMessageObj({ ...errorMessageObj, search: 'Нужно ввести ключевое слово' });
+    } else {
+      localStorage.setItem(`short${category}`, isShortMovie.toString());
+      localStorage.setItem(`search${category}`, movieName);
+      handleSearchMovies(category);
+    }
   };
 
   return (
@@ -56,9 +65,8 @@ function SearchForm({ handleSearchMovies, category }) {
               name="search"
               value={movieName || ''}
               onChange={searchMovieHandler}
-              required
             />
-            <button type="submit" className="search-form__button">
+            <button type="submit" className="search-form__button" disabled={!!isLoading}>
               <img src={Magnifier} alt="Поиск" className="search-form__btn-img" />
             </button>
           </div>

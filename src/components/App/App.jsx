@@ -1,7 +1,12 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-param-reassign */
 import { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import {
+  Routes,
+  Route,
+  useNavigate,
+  Navigate,
+} from 'react-router-dom';
 import CurrentUserContext from '../../context/CurrentUserContext';
 import moviesApi from '../../utils/MoviesApi';
 import mainApi from '../../utils/MainApi';
@@ -36,7 +41,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [movies, setMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
-  const [isCardsShown, setIsCardsShown] = useState(false);
+  const [isCardsShown, setIsCardsShown] = useState(true);
   const [isSuccess, setIsSuccess] = useState(false);
   const [serverError, setServerError] = useState('');
 
@@ -136,6 +141,21 @@ function App() {
       .finally(() => setIsLoading(false));
   };
 
+  const handleSearchSavedMovies = (category) => {
+    setServerError('');
+    setIsLoading(true);
+    try {
+      sortMovies(category);
+    } catch (err) {
+      console.warn(err);
+      if (err === 'Ошибка 404 Not Found') {
+        setServerError(systemMessages.REQUEST_ERROR);
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const openBurger = () => {
     setIsBurgerOpened(true);
   };
@@ -199,6 +219,7 @@ function App() {
     mainApi.setUserInfo(userInfo)
       .then((res) => {
         setCurrentUser(res);
+        setServerError(systemMessages.DATA_UPDATE_SUCCESS);
       })
       .catch((err) => {
         console.warn(err);
@@ -223,12 +244,13 @@ function App() {
           if (res) {
             setIsLoggedIn(true);
             setCurrentUser(res);
-          } else {
-            setIsLoggedIn(false);
-            handleSignout();
           }
         })
-        .catch((err) => console.warn(err));
+        .catch((err) => {
+          console.warn(err);
+          setIsLoggedIn(false);
+          handleSignout();
+        });
     }
   };
 
@@ -282,6 +304,7 @@ function App() {
                 handleSearchMovies={handleSearchMovies}
                 isShown={isCardsShown}
                 error={serverError}
+                setError={setServerError}
                 moviesList={movies}
                 toggleMovieSaved={toggleMovieSaved}
                 category="movies"
@@ -296,10 +319,11 @@ function App() {
                 isLoggedIn={isLoggedIn}
                 component={SavedMovies}
                 isLoading={isLoading}
-                handleSearchMovies={handleSearchMovies}
+                handleSearchMovies={handleSearchSavedMovies}
                 moviesList={savedMovies}
                 isShown={isCardsShown}
                 error={serverError}
+                setError={setServerError}
                 toggleMovieSaved={toggleMovieSaved}
                 category="savedMovies"
               />
@@ -320,22 +344,24 @@ function App() {
           />
           <Route
             path="signup"
-            element={
-              <Register
-                handleRegistration={handleRegistration}
-                isSuccess={isSuccess}
-                error={serverError}
+            element={!isLoggedIn
+              ? <Register
+                  handleRegistration={handleRegistration}
+                  isSuccess={isSuccess}
+                  error={serverError}
+                  setError={setServerError}
               />
-            }
+              : <Navigate to="/movies" />}
           />
           <Route
             path="signin"
-            element={
-              <Login
-                handleLogin={handleLogin}
-                error={serverError}
+            element={!isLoggedIn
+              ? <Login
+                  handleLogin={handleLogin}
+                  error={serverError}
+                  setError={setServerError}
               />
-            }
+              : <Navigate to="/movies" />}
           />
           <Route path="*" element={<PageNotFound />} />
         </Routes>

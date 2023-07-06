@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { systemMessages } from '../../utils/constants';
 
 import './SavedMovies.scss';
@@ -5,6 +6,7 @@ import './SavedMovies.scss';
 import SearchForm from '../SearchForm/SearchForm';
 import Preloader from '../Preloader/Preloader';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import ServerMessage from '../ServerMessage/ServerMessage';
 
 function SavedMovies({
   saved,
@@ -13,24 +15,34 @@ function SavedMovies({
   handleSearchMovies,
   isShown,
   error,
+  setError,
   toggleMovieSaved,
   category,
 }) {
+  useEffect(() => {
+    setError('');
+  });
+
   return (
     <main className="saved-movies">
-      <SearchForm handleSearchMovies={handleSearchMovies} category={category} />
+      <SearchForm
+        handleSearchMovies={handleSearchMovies}
+        category={category}
+        isLoading={isLoading}
+        isShown={isShown}
+      />
       {
         isLoading
           ? <Preloader />
           : isShown
             ? moviesList.length === 0
-              ? <p className="saved-movies__error-message">{systemMessages.EMPTY_RESULT}</p>
+              ? localStorage.getItem(`found-${category}`) && <ServerMessage error={systemMessages.EMPTY_RESULT} />
               : <MoviesCardList
                   moviesList={moviesList}
                   toggleMovieSaved={toggleMovieSaved}
                   saved={saved}
               />
-            : error && <p className="saved-movies__error-message">{error}</p>
+            : error && <ServerMessage error={error} />
       }
     </main>
   );

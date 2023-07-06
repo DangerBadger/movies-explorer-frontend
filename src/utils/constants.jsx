@@ -8,6 +8,22 @@ export const systemMessages = {
   REGISTRATION_ERROR: 'При регистрации пользователя произошла ошибка.',
   WRONG_CREDENTIALS: 'Вы\u00A0ввели неправильный логин или пароль.',
   DEFAULT_ERROR: 'На\u00A0сервере произошла ошибка.',
+  DATA_UPDATE_SUCCESS: 'Данные успешно изменены',
 };
 
 export const SHORTMOVIE_DURATION = 40;
+
+export const CARDS_NUMBER = {
+  WIDE: {
+    CARDS: 3,
+    PAGES: 4,
+  },
+  MIDDLE: {
+    CARDS: 2,
+    PAGES: 4,
+  },
+  NARROW: {
+    CARDS: 1,
+    PAGES: 5,
+  },
+};

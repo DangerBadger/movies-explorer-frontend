@@ -10,6 +10,10 @@ function useFormValidation() {
       regexp: /^[\u0430-\u044fa-z0-9\s-ёЁ]+$/gi,
       validationError: 'Введены недопустимые символы или строка пуста',
     },
+    email: {
+      regexp: /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu,
+      validationError: 'Неверный формат почтового адреса',
+    },
     search: {
       validationError: 'Нужно ввести ключевое слово',
       regexp: /[\W\d\wа-я\sёЁ]+/gi,
@@ -28,7 +32,7 @@ function useFormValidation() {
     setValuesObj({ ...valuesObj, [name]: value });
     setErrorMessageObj({ ...errorMessageObj, [name]: validationMessage });
     setIsValid(evt.target.closest('form').checkValidity());
-    if (name === 'search' || name === 'name') {
+    if (name === 'search' || name === 'name' || name === 'email') {
       customValidation(name, value);
     }
   }
@@ -43,7 +47,9 @@ function useFormValidation() {
     valuesObj,
     setValuesObj,
     errorMessageObj,
+    setErrorMessageObj,
     isValid,
+    setIsValid,
     handleChange,
     resetValidation,
   };

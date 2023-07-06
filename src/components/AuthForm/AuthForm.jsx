@@ -16,6 +16,7 @@ function AuthForm({
   handleRegistration,
   isSuccess,
   error,
+  setError,
 }) {
   const {
     valuesObj,
@@ -27,6 +28,7 @@ function AuthForm({
 
   useEffect(() => {
     resetValidation();
+    setError('');
   }, []);
 
   const handleFormSubmit = (evt) => {

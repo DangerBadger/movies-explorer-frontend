@@ -4,6 +4,7 @@
 /* eslint-disable implicit-arrow-linebreak */
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router';
+import { CARDS_NUMBER } from '../../utils/constants';
 
 import './MoviesCardList.scss';
 
@@ -20,15 +21,21 @@ function MoviesCardList({ moviesList, toggleMovieSaved }) {
 
   const handleCardsCounter = () => {
     if (updateWinSize() >= 1170) {
-      setCardsNumber(3);
-      setCardsPage(4);
+      setCardsNumber(CARDS_NUMBER.WIDE.CARDS);
+      setCardsPage(CARDS_NUMBER.WIDE.PAGES);
     } else if (updateWinSize() < 1170 && updateWinSize() >= 739) {
-      setCardsNumber(2);
-      setCardsPage(4);
+      setCardsNumber(CARDS_NUMBER.MIDDLE.CARDS);
+      setCardsPage(CARDS_NUMBER.MIDDLE.PAGES);
     } else {
-      setCardsNumber(1);
-      setCardsPage(5);
+      setCardsNumber(CARDS_NUMBER.NARROW.CARDS);
+      setCardsPage(CARDS_NUMBER.NARROW.PAGES);
     }
+  };
+
+  const handleCardsCounterTimeout = () => {
+    setTimeout(() => {
+      handleCardsCounter();
+    }, 1000);
   };
 
   useEffect(() => {
@@ -37,18 +44,10 @@ function MoviesCardList({ moviesList, toggleMovieSaved }) {
   }, []);
 
   useEffect(() => {
-    window.addEventListener('resize', () => {
-      setTimeout(() => {
-        handleCardsCounter();
-      }, 1000);
-    });
+    window.addEventListener('resize', handleCardsCounterTimeout);
 
     return () => {
-      window.addEventListener('resize', () => {
-        setTimeout(() => {
-          handleCardsCounter();
-        }, 1000);
-      });
+      window.removeEventListener('resize', handleCardsCounterTimeout);
     };
   }, []);
 
