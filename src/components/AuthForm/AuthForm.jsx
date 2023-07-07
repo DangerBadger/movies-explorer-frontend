@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-closing-tag-location */
+/* eslint-disable react/jsx-curly-newline */
 /* eslint-disable no-unused-expressions */
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
@@ -5,9 +7,17 @@ import useFormValidation from '../../utils/hooks/useFormValidation';
 
 import './AuthForm.scss';
 
+import ServerMessage from '../ServerMessage/ServerMessage';
 import Logo from '../Logo/Logo';
 
-function AuthForm({ isRegisterForm, handleLogin, handleRegistration }) {
+function AuthForm({
+  isRegisterForm,
+  handleLogin,
+  handleRegistration,
+  isSuccess,
+  error,
+  setError,
+}) {
   const {
     valuesObj,
     errorMessageObj,
@@ -18,13 +28,18 @@ function AuthForm({ isRegisterForm, handleLogin, handleRegistration }) {
 
   useEffect(() => {
     resetValidation();
+    setError('');
   }, []);
 
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
     if (isValid) {
-      isRegisterForm ? handleRegistration() : handleLogin();
-      resetValidation();
+      isRegisterForm
+        ? handleRegistration(valuesObj.email, valuesObj.password, valuesObj.name)
+        : handleLogin(valuesObj.email, valuesObj.password);
+      if (isSuccess) {
+        resetValidation();
+      }
     }
   };
 
@@ -43,6 +58,8 @@ function AuthForm({ isRegisterForm, handleLogin, handleRegistration }) {
                   type="text"
                   className={`auth-form__input ${errorMessageObj.name && 'auth-form__input_incorrect'}`}
                   name="name"
+                  minLength={2}
+                  maxLength={30}
                   id="name"
                   value={valuesObj.name || ''}
                   onChange={handleChange}
@@ -79,6 +96,7 @@ function AuthForm({ isRegisterForm, handleLogin, handleRegistration }) {
           />
           <span className="auth-form__input-error">{errorMessageObj.password}</span>
         </fieldset>
+        {error && <ServerMessage error={error} />}
         <button className={`auth-form__button ${!isValid && 'auth-form__button_innactive'}`} type="submit" disabled={!isValid}>{isRegisterForm ? 'Зарегистрироваться' : 'Войти'}</button>
       </form>
       <span className="auth-form__auth-container">

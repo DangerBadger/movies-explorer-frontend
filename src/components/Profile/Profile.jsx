@@ -1,3 +1,7 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/jsx-indent */
+/* eslint-disable react/jsx-closing-bracket-location */
+/* eslint-disable no-nested-ternary */
 import { useState, useEffect, useContext } from 'react';
 
 import CurrentUserContext from '../../context/CurrentUserContext';
@@ -5,59 +9,91 @@ import useFormValidation from '../../utils/hooks/useFormValidation';
 
 import './Profile.scss';
 
-function Profile({ onUpdate, handleLogout }) {
+import ServerMessage from '../ServerMessage/ServerMessage';
+
+function Profile({
+  onUpdate,
+  handleSignout,
+  error,
+  setError,
+}) {
+  const currentUser = useContext(CurrentUserContext);
+
   const {
     valuesObj,
-    setValuesObj,
     errorMessageObj,
     isValid,
+    setIsValid,
     handleChange,
     resetValidation,
-  } = useFormValidation({ name: '', email: '' });
+  } = useFormValidation();
 
-  const currentUser = useContext(CurrentUserContext);
-  const { name, email } = currentUser;
-
-  const [isBlocked, setIsBlocked] = useState(true);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   const [isEdited, setIsEdited] = useState(false);
+  const [isBlocked, setIsBlocked] = useState(true);
+
+  useEffect(() => {
+    setIsValid(false);
+    setIsBlocked(true);
+    setName(currentUser.name || '');
+    setEmail(currentUser.email || '');
+    setIsEdited(false);
+  }, [currentUser]);
 
   useEffect(() => {
     resetValidation();
+    setError('');
   }, []);
 
   useEffect(() => {
-    if (name && email) {
-      setValuesObj({
-        name,
-        email,
-      });
-    }
-  }, [currentUser]);
+    setError('');
+  }, [isEdited]);
 
-  const enableInputEdit = () => setIsBlocked(false);
+  const enableInputEdit = () => {
+    setIsBlocked(false);
+    setError('');
+  };
+
   const disableInputEdit = () => setIsBlocked(true);
+
+  const handleChangeName = (evt) => {
+    if (evt.target.value !== currentUser.name) {
+      setIsEdited(true);
+    } else {
+      setIsEdited(false);
+    }
+    setName(evt.target.value);
+    handleChange(evt);
+  };
+
+  const handleChangeEmail = (evt) => {
+    if (evt.target.value !== currentUser.email) {
+      setIsEdited(true);
+    } else {
+      setIsEdited(false);
+    }
+    setEmail(evt.target.value);
+    handleChange(evt);
+  };
 
   const handleProfileFormSubmit = (evt) => {
     evt.preventDefault();
     disableInputEdit();
-    if (isValid) {
+    if (isValid && isEdited) {
       onUpdate({
-        name: valuesObj.name,
-        email: valuesObj.email,
+        name,
+        email,
       });
     }
     setIsEdited(false);
-  };
-
-  const onChange = (evt) => {
-    handleChange(evt);
-    setIsEdited(true);
+    resetValidation();
   };
 
   return (
     <main className="profile">
       <h2 className="profile__welcome">
-        {`Привет, ${name}!`}
+        {`Привет, ${currentUser.name}!`}
       </h2>
       <form className="profile__form" onSubmit={handleProfileFormSubmit}>
         <div className="profile__input-outer-container">
@@ -68,11 +104,11 @@ function Profile({ onUpdate, handleLogout }) {
               id="name"
               name="name"
               minLength={2}
-              maxLength={55}
+              maxLength={30}
               disabled={isBlocked}
-              value={valuesObj.name || ''}
-              onChange={onChange}
-              className="profile__input"
+              value={name || ''}
+              onChange={handleChangeName}
+              className={`profile__input ${errorMessageObj.name && 'profile__input_incorrect'}`}
               placeholder="Изменить имя"
               required
             />
@@ -87,8 +123,8 @@ function Profile({ onUpdate, handleLogout }) {
               id="email"
               name="email"
               disabled={isBlocked}
-              value={valuesObj.email || ''}
-              onChange={onChange}
+              value={email || ''}
+              onChange={handleChangeEmail}
               className="profile__input"
               placeholder="Изменить почту"
               required
@@ -96,15 +132,22 @@ function Profile({ onUpdate, handleLogout }) {
           </div>
           <span className="profile__input-error">{errorMessageObj.email}</span>
         </div>
-        {
-          isBlocked
-            ? <button className="profile__edit-btn" type="button" onClick={enableInputEdit}>Редактировать</button>
-            : isEdited
-              ? <button className="profile__edit-btn" type="submit">Сохранить</button>
-              : <button className="profile__edit-btn" type="button" onClick={disableInputEdit}>Отмена</button>
-        }
+        <div className="profile__error-box">
+          {error && <ServerMessage error={error} />}
+        </div>
+        {isBlocked
+          ? <button className="profile__edit-btn" type="button" onClick={enableInputEdit}>Редактировать</button>
+          : isEdited
+            ? <button
+                className={`profile__edit-btn ${!isValid && 'profile__edit-btn_disabled'}`}
+                type="submit"
+                disabled={!isValid}
+              >
+                Сохранить
+              </button>
+            : <button className="profile__edit-btn" type="button" onClick={disableInputEdit}>Отмена</button>}
       </form>
-      <button className="profile__edit-btn profile__edit-btn_logout" type="button" onClick={handleLogout}>Выйти из аккаунта</button>
+      <button className="profile__edit-btn profile__edit-btn_logout" type="button" onClick={handleSignout}>Выйти из аккаунта</button>
     </main>
   );
 }

@@ -49,7 +49,12 @@
     justify-content: space-around;
     margin: 0 0 18px;
     padding: 0;
-    transition: all .4s;
+    transition: all .3s linear;
+  }
+
+  &__img-container:hover {
+    transform: scale(1.03);
+    opacity: .75;
   }
 
   &__poster {

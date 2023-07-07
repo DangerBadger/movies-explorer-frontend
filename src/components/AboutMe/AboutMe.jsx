@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import './AboutMe.scss';
 import Me from '../../images/Me.jpg';
-import LinkArrow from '../../images/link-arrow.svg';
 
 import SectionHeader from '../SectionHeader/SectionHeader';
 

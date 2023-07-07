@@ -5,11 +5,36 @@ function useFormValidation() {
   const [errorMessageObj, setErrorMessageObj] = useState({});
   const [isValid, setIsValid] = useState(true);
 
+  const validationSettings = {
+    name: {
+      regexp: /^[\u0430-\u044fa-z0-9\s-ёЁ]+$/gi,
+      validationError: 'Введены недопустимые символы или строка пуста',
+    },
+    email: {
+      regexp: /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu,
+      validationError: 'Неверный формат почтового адреса',
+    },
+    search: {
+      validationError: 'Нужно ввести ключевое слово',
+      regexp: /[\W\d\wа-я\sёЁ]+/gi,
+    },
+  };
+
+  const customValidation = (name, value) => {
+    if (!validationSettings[name].regexp.test(value)) {
+      setErrorMessageObj({ ...errorMessageObj, [name]: validationSettings[name].validationError });
+      setIsValid(false);
+    }
+  };
+
   function handleChange(evt) {
     const { name, value, validationMessage } = evt.target;
     setValuesObj({ ...valuesObj, [name]: value });
     setErrorMessageObj({ ...errorMessageObj, [name]: validationMessage });
     setIsValid(evt.target.closest('form').checkValidity());
+    if (name === 'search' || name === 'name' || name === 'email') {
+      customValidation(name, value);
+    }
   }
 
   function resetValidation() {
@@ -22,7 +47,9 @@ function useFormValidation() {
     valuesObj,
     setValuesObj,
     errorMessageObj,
+    setErrorMessageObj,
     isValid,
+    setIsValid,
     handleChange,
     resetValidation,
   };

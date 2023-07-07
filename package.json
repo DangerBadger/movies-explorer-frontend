@@ -18,7 +18,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "npx eslint ."
+    "lint": "npx eslint .",
+    "deploy": "  scp -r ./build/* graind@158.160.112.119:/home/graind/frontend"
   },
   "eslintConfig": {
     "extends": [
