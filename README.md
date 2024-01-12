@@ -15,5 +15,3 @@ Frontend-часть сервиса.
 - авторизация через передачу JWT-токена в cookies.
 
 [Ссылка на макет Figma](https://disk.yandex.ru/d/l8IpsoxpArjS9Q)
-
-
