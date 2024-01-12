@@ -7,7 +7,7 @@ const checkResponse = (res) => {
 };
 
 const request = (endpoint, options) => {
-  return (fetch(`${mainApiSettings.baseUrl}${endpoint}`, options).then(checkResponse));
+  return (fetch(`${mainApiSettings.baseUrl}${endpoint}`, options).then((res) => checkResponse(res)));
 };
 
 export const register = (email, password, name) => {
